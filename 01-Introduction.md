@@ -10,4 +10,4 @@ In this workshop, we will explore how GitHub capabilities such as Codespaces, Co
 
 ## But first, let start with an icebreaker activity 😁
 
-In this GitHub template repository - _which will be the starting point of your journey_ - I invite you to go to the [**Just say hi**](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/discussions/categories/just-say-hi) discussion category and simply create a new discussion to introduce yourself and react to other the discussion from fellow participants to share a smile 😊
+In this GitHub template repository - _which will be the starting point of your journey_ - I invite you to go to the [**Just say hi**](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/discussions/categories/just-say-hi) discussion category and simply create a new discussion to introduce yourself and react to other discussions from fellow participants to share a smile 😊
