@@ -1,5 +1,9 @@
 # 01 - Introduction
 
+| **Goal**                                               | **Estimated duration** |
+| ------------------------------------------------------ | ---------------------- |
+| Know your host and understand the goal of the workshop | 15 min                 |
+
 ## Hi 👋🏼 I am your host
 
 // Image of a PowerPoint deck where the host of the workshop can present themselves (_picture, title, community activities, expertise, hobbies..._)

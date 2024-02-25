@@ -1,5 +1,9 @@
 # 02 - Quick tour of GitHub
 
+| **Goal**                                                                                         | **Estimated duration** |
+| ------------------------------------------------------------------------------------------------ | ---------------------- |
+| Being confortable navigating in the GitHub user interface and knowing where to find key elements | 15 min                 |
+
 > [!NOTE]
 > At this point, we will assume that you already created a GitHub account. But, if it is not the case, the host will do their best to help you complete this pre-requisite.
 
