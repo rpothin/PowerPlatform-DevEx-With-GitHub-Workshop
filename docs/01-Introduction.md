@@ -1,8 +1,8 @@
 # 01 - Introduction
 
-| **Goal**                                               | **Estimated duration** |
-| ------------------------------------------------------ | ---------------------- |
-| Know your host and understand the goal of the workshop | 15 min                 |
+| **Goal**                                                                               | **Estimated duration** |
+| -------------------------------------------------------------------------------------- | ---------------------- |
+| Know the workshop host and gain a clear understanding of the workshop's objectives | 15 min                 |
 
 ## Hi 👋🏼 I am your host
 
