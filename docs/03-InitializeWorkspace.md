@@ -9,11 +9,11 @@
 1. Go to the [rpothin/PowerPlatform-DevEx-With-GitHub-Workshop](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/) GitHub repository template
 2. Click on the **Use this template** button
 
-<img width="665" alt="image" src="https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/dbd38d51-39aa-4046-b555-1ebdc807685b">
+![Click on the **Use this template** button](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/dbd38d51-39aa-4046-b555-1ebdc807685b)
 
 3. Select the **Create a new repository** option
 
-<img width="666" alt="image" src="https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/2998c6bf-c1d3-4aaf-b565-ab284145daff">
+![Select the **Create a new repository** option](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/2998c6bf-c1d3-4aaf-b565-ab284145daff)
 
 4. In the **Create a new repository** page fill in the different fields
 
@@ -26,7 +26,7 @@
 | Description          | Enter a meaningfull description to you - _can be something like "Repository for the 'Improve Power Platform developer’s experience with GitHub' workshop"_ |
 | Visibility           | Select the option you are best comfortable with                                                                                                            |
 
-<img width="418" alt="image" src="https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/fd4723d6-6f02-475d-bff5-8d4301d02708">
+![**Create a new repository** page](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/fd4723d6-6f02-475d-bff5-8d4301d02708)
 
 5. Click on the **Create repository** to finalize the creation of the repository
 
