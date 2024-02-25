@@ -46,7 +46,7 @@ This template repository is a support for a workshop that will guide you combini
 > Only relevant for in-person workshop with a group.
 
 2. [Quick tour of GitHub](./docs/02-QuickTourOfGitHub.md) (15min)
-3. Initialization of your workspace (15min)
+3. [Initialization of your workspace](./docs/03-InitializeWorkspace.md) (15min)
 4. Organize your work (15min)
 5. But first some ALM setup (30min)
 6. Code it and ship it! (1 hour)

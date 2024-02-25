@@ -1,0 +1,43 @@
+# Initialize your workspace
+
+| **Goal**                                                                                                   | **Estimated duration** |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Create a copy of this GitHub repository template in a suitable organization, such as your personal profile | 15 min                 |
+
+## Creation of the repository
+
+1. Go to the [rpothin/PowerPlatform-DevEx-With-GitHub-Workshop](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/) GitHub repository template
+2. Click on the **Use this template** button
+
+// Add screenshot to illustrate this point
+
+3. Select the **Create a new repository** option
+
+// Add screenshot to illustrate this point
+
+4. In the **Create a new repository** page fill in the different fields
+
+| **Field**            | **Instruction**                                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Repository template  | Should be set to "rpothin/PowerPlatform-DevEx-With-GitHub-Workshop"                                                                                        |
+| Include all branches | Let unchecked - _to avoid getting work in progress branches_                                                                                               |
+| Owner                | Select the organization where you want to create the template - _your personal profile is the recommended option_                                          |
+| Repository name      | You can set it to "rpothin/PowerPlatform-DevEx-With-GitHub-Workshop"                                                                                       |
+| Description          | Enter a meaningfull description to you - _can be something like "Repository for the 'Improve Power Platform developer’s experience with GitHub' workshop"_ |
+| Visibility           | Select the option you are best comfortable with                                                                                                            |
+
+// Add screenshot to illustrate this point
+
+5. Click on the **Create repository** to finalize the creation of the repository
+
+// Add screenshot to illustrate the repository initialized
+
+## Validation of the configuration of the repository created
+
+- The visibility of the repository should be consistent with the option you selected (_public or private_)
+- You should have all the following tabs in your repository: Issues, Pull requests, Discussions, Actions, Projects, Security, Insights and Settings
+- You should have only 1 branch named **main**
+
+> [!WARNING]
+> There are some URLs pointing directly to the source GitHub template repository at many places, so please don't use this repository as is for a project without updating this references.
+> To address this point, you can simply search for "rpothin/PowerPlatform-DevEx-With-GitHub-Workshop" in the entire repository and change these references with your own repository full name (`<organization>/<repository name>`).
