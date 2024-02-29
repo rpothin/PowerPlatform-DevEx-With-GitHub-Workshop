@@ -39,5 +39,5 @@
 - You should have only 1 branch named **main**
 
 > [!WARNING]
-> There are some URLs pointing directly to the source GitHub template repository at many places, so please don't use this repository as is for a project without updating this references.
+> There are some URLs pointing directly to the source GitHub template repository at many places, so please don't use this repository as is for a project without updating these references.
 > To address this point, you can simply search for "rpothin/PowerPlatform-DevEx-With-GitHub-Workshop" in the entire repository and change these references with your own repository full name (`<organization>/<repository name>`).
