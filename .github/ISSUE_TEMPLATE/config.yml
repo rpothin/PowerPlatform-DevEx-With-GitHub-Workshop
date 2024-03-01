@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Power Platform Open-Source Hub
+    url: https://rpothin.github.io/PowerPlatform-OpenSource-Hub/
+    about: Start your journey here
+  - name: Community Forum
+    url: https://powerusers.microsoft.com/t5/Power-Apps-Community/ct-p/PowerApps1
+    about: Get help and support from the community
