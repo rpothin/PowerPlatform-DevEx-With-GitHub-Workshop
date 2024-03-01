@@ -1,0 +1,72 @@
+name: Feature Request (Form)
+description: Suggest an idea for this project
+title: "[Feature]: "
+labels: ["enhancement"]
+projects: []
+assignees:
+  - rpothin
+body:
+  - type: input
+    id: feature_name
+    attributes:
+      label: Feature Name
+      description: A clear and concise name for the feature
+      placeholder: "Ex. Add a new button to the homepage"
+    validations:
+      required: true
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: Feature Description
+      description: Describe the feature you are requesting
+      placeholder: "Ex. I would like to see a new button on the homepage that allows me to quickly access my account settings"
+    validations:
+      required: true
+  - type: input
+    id: feature_reason
+    attributes:
+      label: Reason for Feature
+      description: Why do you think this feature should be added?
+      placeholder: "Ex. I think this feature would be useful because it would save me time when I need to access my account settings"
+    validations:
+      required: true
+  - type: input
+    id: feature_benefit
+    attributes:
+      label: Benefit of Feature
+      description: What benefit would this feature provide to you?
+      placeholder: "Ex. This feature would save me time and make it easier to access my account settings"
+    validations:
+      required: true
+  - type: input
+    id: feature_impact
+    attributes:
+      label: Impact of Feature
+      description: What impact would this feature have on the project?
+      placeholder: "Ex. This feature would improve the user experience and make it easier for users to access their account settings"
+    validations:
+      required: true
+  - type: input
+    id: feature_alternatives
+    attributes:
+      label: Alternatives
+      description: Are there any alternatives to this feature?
+      placeholder: "Ex. We could add a new button to the homepage that links to the account settings page"
+    validations:
+      required: true
+  - type: input
+    id: feature_additional_info
+    attributes:
+      label: Additional Information
+      description: Is there anything else you would like to add?
+      placeholder: "Ex. I think this feature would be a great addition to the project and would improve the user experience"
+    validations:
+      required: false
+  - type: input
+    id: feature_screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your feature request
+      placeholder: "Ex. [screenshot1.png, screenshot2.png]"
+    validations:
+      required: false
