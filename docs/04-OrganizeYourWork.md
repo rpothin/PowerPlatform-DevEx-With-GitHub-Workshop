@@ -25,8 +25,54 @@ By mastering these tools, teams can better manage their workflows, track progres
 
 ### 1. Project setup
 
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop,
+1. Go to the **Projects** tab
+2. Click on the downward-facing arrow at the right of **Link a project**
+3. Select the **New project** option
+4. Click on the **New project** button
+5. Select one of the proposed template (_if you have no idea, you can choose the **Kanban** one which was presented earlier_)
+6. In the **Project name** field, enter a meaningful value (_like "Power Platform GitHub DevEx Workshop"_)
+7. Click on the **Create project** button
+
 ### 2. Initialize a milestone
+
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop,
+1. Go to the **Issues** tab
+2. Click on **Milestones**
+3. Click on **New milestone**
+4. Enter a **Title**, a **Due date** (_you can set it to tomorrow for example_) and a short **Description** (_like "Power Platform GitHub DevEx Workshop"_)
+5. Click on the **Create milestone** button
 
 ### 3. Create a feature request using the provided form
 
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop,
+1. Go to the **Issues** tab
+2. Click on the **New issue** button
+3. On the **Feature Request (form)** line, click on the **Get started** button
+4. Enter the requested information: Title, Description and Priority
+5. Check the **Code of conduct** box
+6. Click on the **Submit new issue** button
+
 ### 4. Create an issue form for bugs
+
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, from the **Code** tab,
+1. Press the **.** key of your keyboard for a few seconds to open the [github.dev web-based editor](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
+2. Under [.github/ISSUE_TEMPLATE/](../.github/ISSUE_TEMPLATE/) directory, create new `2-bug.yml` file
+3. Enter the following code into the new file
+
+```yml
+name: Bug Report
+description: File a bug report
+title: "[Bug] "
+labels: ["bug"]
+projects: []
+assignees: []
+body:
+```
+
+4. Then add a few elements to the form based on the following example from the GitHub documentation: [Creating issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms)
+5. Save your file
+6. In the **Source Control** tab of your editor, stage your new file
+7. Add a commit message like "Add bug issue form"
+8. Commit the change
+9. Go back to your repository and validate your new bug issue form is available and ready to use
