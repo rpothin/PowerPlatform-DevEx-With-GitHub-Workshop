@@ -7,15 +7,15 @@
 ## Creation of the repository
 
 1. Go to the [rpothin/PowerPlatform-DevEx-With-GitHub-Workshop](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/) GitHub repository template
-2. Click on the **Use this template** button
+2. Click on the `Use this template` button
 
 ![Click on the **Use this template** button](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/dbd38d51-39aa-4046-b555-1ebdc807685b)
 
-3. Select the **Create a new repository** option
+3. Select the `Create a new repository` option
 
 ![Select the **Create a new repository** option](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/2998c6bf-c1d3-4aaf-b565-ab284145daff)
 
-4. In the **Create a new repository** page fill in the different fields
+4. In the `Create a new repository` page, fill in the different fields
 
 | **Field**            | **Instruction**                                                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@
 
 ![**Create a new repository** page](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/fd4723d6-6f02-475d-bff5-8d4301d02708)
 
-5. Click on the **Create repository** to finalize the creation of the repository
+5. Click on the `Create repository` button to finalize the creation of the repository
 
 // Add screenshot to illustrate the repository initialized
 
