@@ -14,23 +14,23 @@ body:
       placeholder: "Ex. I would like to see a new button on the homepage that allows me to quickly access my account settings"
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: feature_priority
     attributes:
       label: Priority
-      description: "Choose the priority of this feature request"
+      description: Choose the priority of this feature request
       options:
         - Low
         - Medium
         - High
+      default: 1
     validations:
       required: true
   - type: checkboxes
-    id: code_of_conduct
+    id: terms
     attributes:
       label: Code of Conduct
-      description: "By submitting this issue, you agree to abide by our Code of Conduct"
+      description: By submitting this issue, you agree to follow our [Code of Conduct](./CODE_OF_CONDUCT.md)
       options:
-        - I agree
-    validations:
-      required: true
+        - label: I agree to follow this project's Code of Conduct
+          required: true
