@@ -1,9 +1,9 @@
 ---
 name: Feature request (from template)
 about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+title: '[Feature] '
+labels: 'enhancement'
+assignees: 'rpothin'
 
 ---
 
