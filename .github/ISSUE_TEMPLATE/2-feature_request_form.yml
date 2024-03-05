@@ -3,8 +3,7 @@ description: Suggest an idea for this project
 title: "[Feature] "
 labels: ["enhancement"]
 projects: []
-assignees:
-  - rpothin
+assignees: []
 body:
   - type: textarea
     id: feature_description
