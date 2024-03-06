@@ -4,12 +4,10 @@
 | ---------------------------------------------------------------------------------------------------- | ---------------------- |
 | Implement a GitHub workflow to manage the Application Lifecycle Management (ALM) of our developments | 30 min                 |
 
-> [!NOTE]
-> Due to time constraint and because it is not the main goal of this workshop, only one GitHub workflow will be built in this chapter using GitHub Codespaces and GitHub Copilot. The rest of the required workflows are already present in the GitHub repository template that you used to initialize your repository in [chapter 3](./03-InitializeWorkspace.md).
-
 ## Start and setup your GitHub Codespace
 
 In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, from the **Code** tab,
+
 1. Click on the `Code` button
 2. In the `Codespaces` tab, click on the `Create codespace on main` button
 3. Wait for the codespace to be initialized and opened in your browser
@@ -18,9 +16,80 @@ In your repository created from this GitHub repository template in the [chapter 
 
 ## Create a GitHub workflow
 
-> [!NOTE]
-> We will create a GitHub workflow to automatically build and deploy the code of a Power Platform solution containing a PCF Components.
+First, let select the track you want to follow for the next steps:
 
-In your GitHub Codespaces created in the previous step, ...
+- [**Frontend development track**](#frontend-development-track): If you want to focus on the development of PCF components
+- [**Backend development track**](#backend-development-track): If you want to focus on the development of a .Net project for the testing of customizations around Dataverse using its API
+
+> [!NOTE]
+> If you finish the selected track before the time allocated to this chapter, you can come back here and follow the steps for the other track.
+
+### Frontend development track
+
+In your GitHub Codespaces created in the previous step,
+
+1. Add a new file named `pcf-components-ci.yml` under the `.github/workflows` folder
+2. Copy and paste the comment block below in the file created in the previous step
+
+```yaml
+# This is a GitHub Actions workflow for Continuous Integration (CI) of PCF components.
+# The workflow is triggered on every push only under the "src/pcf-components" folder to a branch that is not main.
+# 
+# The workflow performs the following steps:
+# 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
+# 2. Install Dependencies: It installs all the dependencies defined in the package.json file.
+# 3. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
+# 4. Test: It runs unit tests using the 'npm test' command.
+# 5. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 6. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action.
+```
+
+3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
+
+> [!TIP]
+> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` to explore how GitHub Copilot can help you even more in the context of this file.
+
+4. Once the file is completed, commit and push the changes to the repository
+
+> [!WARNING]
+> To simplify this configuration you can push the changes directly to the `main` branch, but in a real-world scenario, you should create a new branch, push the changes to it, and then create a pull request to merge the changes into the `main` branch.
+
+5. Validate that the workflow appears in the `Actions` tab of your repository
+
+> [!NOTE]
+> In the next chapter, we will implement a PCF component and test the workflow created in this chapter.
+
+### Backend development track
+
+In your GitHub Codespaces created in the previous step,
+
+1. Add a new file named `dataverse-api-testing.yml` under the `.github/workflows` folder
+2. Copy and paste the comment block below in the file created in the previous step
+
+```yaml
+# This is a GitHub Actions workflow for testing customizations implemented around Dataverse using its API.
+# The workflow is triggered on every push only under the "src/dataverse-api-testing" folder to the main branch.
+# 
+# The workflow performs the following steps:
+# 1. Setup: It sets up the required environment with .NET 8.0.
+# 2. Restore Dependencies: It restores all the dependencies and tools of the .NET project using the 'dotnet restore' command.
+# 3. Test: It runs API tests using the 'dotnet test' command using the "DATASERVICE_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub secrets in the repository to be able to use the Dataverse API in the considered Test environment.
+# 4. Publish Test Results: Use the "dorny/test-reporter@main" GitHub action using the trx file generated by the test command and the "dotnet-trx" reporter to get a nice report of the test results.
+```
+
+3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
+
+> [!TIP]
+> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` to explore how GitHub Copilot can help you even more in the context of this file.
+
+4. Once the file is completed, commit and push the changes to the repository
+
+> [!WARNING]
+> To simplify this configuration you can push the changes directly to the `main` branch, but in a real-world scenario, you should create a new branch, push the changes to it, and then create a pull request to merge the changes into the `main` branch.
+
+5. Validate that the workflow appears in the `Actions` tab of your repository
+
+> [!NOTE]
+> In the next chapter, we will implement a .Net project and test the workflow created in this chapter.
 
 [⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 README](../README.md) | [➡️ Next chapter](./06-CodeItAndShipIt.md)
