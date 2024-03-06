@@ -47,7 +47,7 @@ In your GitHub Codespaces created in the previous step,
 3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
 
 > [!TIP]
-> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` to explore how GitHub Copilot can help you even more in the context of this file.
+> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` commands to explore how GitHub Copilot can help you even more in the context of this file.
 
 4. Once the file is completed, commit and push the changes to the repository
 
@@ -80,7 +80,7 @@ In your GitHub Codespaces created in the previous step,
 3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
 
 > [!TIP]
-> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` to explore how GitHub Copilot can help you even more in the context of this file.
+> You can use the `Ctrl + i` keyboard shortcut combined with the `/doc` or `/explain` commands to explore how GitHub Copilot can help you even more in the context of this file.
 
 4. Once the file is completed, commit and push the changes to the repository
 
