@@ -41,12 +41,12 @@ This template repository is a support for a workshop that will guide you combini
 > The estimated duration of the workshop is 3 hours and the proposed agenda below will take this into account. But if you are going through this workshop by yourself you can definitely take the time you need to go through the different chapters. The main objective is that at the end you got the expected outcome from this journey.
 
 1. [Introduction](./docs/01-Introduction.md) (15min) - _Only relevant for in-person workshop with a group_
-2. [Quick tour of GitHub](./docs/02-QuickTourOfGitHub.md) (15min)
-3. [Initialization of your workspace](./docs/03-InitializeWorkspace.md) (15min)
-4. [Organize your work](./docs/04-OrganizeYourWork.md) (15min)
-5. [But first some ALM setup](./docs/05-SomeALMSetup.md) (30min)
-6. Code it and ship it! (1 hour)
-7. Job's not finished! (30min)
+2. [Quick tour of GitHub](./docs/02-QuickTourOfGitHub.md) (15 min)
+3. [Initialization of your workspace](./docs/03-InitializeWorkspace.md) (15 min)
+4. [Organize your work](./docs/04-OrganizeYourWork.md) (15 min)
+5. [But first some ALM setup](./docs/05-SomeALMSetup.md) (30 min)
+6. Code it and ship it! (60 min)
+7. Job's not finished! (30 min)
 
 > [!NOTE]
 > The remaining time will be for questions or discussions we did not get the chance to cover earlier.
