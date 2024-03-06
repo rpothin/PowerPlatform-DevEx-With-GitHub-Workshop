@@ -40,7 +40,7 @@ In your repository created from this GitHub repository template in the [chapter 
 1. Go to the `Issues` tab
 2. Click on `Milestones`
 3. Click on `New milestone`
-4. Enter a `Title`, a `Due date` (_you can set it to tomorrow for example_) and a short `Description` (_like "Power Platform GitHub DevEx Workshop"_)
+4. Enter a `Title`, a `Due date` (_you can set it to tomorrow for example_) and a short `Description` (_like "Power Platform GitHub DevEx Workshop excercice"_)
 5. Click on the `Create milestone` button
 
 ### 3. Create a feature request using the provided form
