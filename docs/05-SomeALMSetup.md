@@ -22,3 +22,5 @@ In your repository created from this GitHub repository template in the [chapter 
 > We will create a GitHub workflow to automatically build and deploy the code of a Power Platform solution containing a PCF Components.
 
 In your GitHub Codespaces created in the previous step, ...
+
+[⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 README](../README.md) | [➡️ Next chapter](./06-CodeItAndShipIt.md)

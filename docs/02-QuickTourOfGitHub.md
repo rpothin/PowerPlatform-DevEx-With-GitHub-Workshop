@@ -42,3 +42,5 @@
 > This repository has been selected by checking the [**Power Platform Open-Source Hub**](https://rpothin.github.io/PowerPlatform-OpenSource-Hub/) website 😉
 
 [![Screenshot of the microsoft/Power-Fx repository](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/5dbf4ec5-0c0d-4fa7-99a1-01f06fd36b08)](https://github.com/microsoft/Power-Fx)
+
+[⬅️ Previous chapter](./01-Introduction.md) | [🏡 README](../README.md) | [➡️ Next chapter](./03-InitializeWorkspace.md)

@@ -77,3 +77,5 @@ body:
 7. Add a commit message like "Add bug issue form"
 8. Commit the change
 9. Go back to your repository and validate your new bug issue form is available and ready to use
+
+[⬅️ Previous chapter](./03-InitializeWorkspace.md) | [🏡 README](../README.md) | [➡️ Next chapter](./05-SomeALMSetup.md)

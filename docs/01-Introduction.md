@@ -23,3 +23,5 @@ In this GitHub template repository - _which will be the starting point of your j
 1. go to the [**Just say hi**](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/discussions/categories/just-say-hi) discussion category
 2. create a new discussion to quickly introduce yourself
 3. react to other discussions from fellow participants to share a smile 😊
+
+[🏡 README](../README.md) | [➡️ Next chapter](./02-QuickTourOfGitHub.md)
