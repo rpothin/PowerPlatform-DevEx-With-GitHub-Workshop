@@ -49,7 +49,7 @@ This template repository is a support for a workshop that will guide you combini
 7. Job's not finished! (30min)
 
 > [!NOTE]
-> The remaining time would be for questions or discussions we did not get the chance to cover earlier.
+> The remaining time will be for questions or discussions we did not get the chance to cover earlier.
 
 ## ❗ Code of Conduct
 
