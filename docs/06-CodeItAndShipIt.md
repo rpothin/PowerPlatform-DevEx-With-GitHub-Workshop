@@ -15,8 +15,10 @@ In your GitHub Codespaces created in the previous chapter,
 
 1. Press `Ctrl + Shift + P` to open the command palette
 2. Search for the `Codespaces: Add Dev Container Configuration Files...` command and select it
-3. Select the `Node.js` option
-4. Wait for the dev container to be initialized and opened in your browser
+3. Select `Create a new configuration`
+4. Click on `Show All Definitions...`
+5. Search `Node.js` and select a proposed option
+6. Wait for the dev container to be initialized and opened in your browser
 
 ### Let's code a PCF component
 
@@ -36,8 +38,10 @@ In your GitHub Codespaces created in the previous chapter,
 
 1. Press `Ctrl + Shift + P` to open the command palette
 2. Search for the `Codespaces: Add Dev Container Configuration Files...` command and select it
-3. Select the `.NET Core` option
-4. Wait for the dev container to be initialized and opened in your browser
+3. Select `Create a new configuration`
+4. Click on `Show All Definitions...`
+5. Search `.Net` and select a proposed option
+6. Wait for the dev container to be initialized and opened in your browser
 
 ### Let's code some tests
 
