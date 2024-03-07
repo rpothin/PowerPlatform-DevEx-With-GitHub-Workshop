@@ -36,8 +36,9 @@ In your repository created from this GitHub repository template in the [chapter 
 1. Click on the `Code` button
 2. In the `Codespaces` tab, click on the `Create codespace on main` button
 3. Wait for the codespace to be initialized and opened in your browser
-4. In the extensions tab, search for `GitHub Copilot` and install it
-5. In the extensions tab, search for `GitHub Actions` and install it
+
+> [!NOTE]
+> The dev container configuration coming by default with this GitHub template repository is already configured with the following extensions: GitHub Copilot, GitHub Actions and Power Platform Tools.
 
 ## Create a GitHub workflow
 
