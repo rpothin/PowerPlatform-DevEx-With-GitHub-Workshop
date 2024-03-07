@@ -38,7 +38,7 @@ In your repository created from this GitHub repository template in the [chapter 
 3. Wait for the codespace to be initialized and opened in your browser
 
 > [!NOTE]
-> The dev container configuration coming by default with this GitHub template repository is already configured with the following extensions: GitHub Copilot, GitHub Actions and Power Platform Tools.
+> The dev container configuration coming by default with this GitHub template repository is already configured with a few extensions that will be used during the labs of this workshop.
 
 ## Create a GitHub workflow
 
