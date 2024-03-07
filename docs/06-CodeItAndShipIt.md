@@ -78,6 +78,10 @@ In your GitHub Codespaces created in the previous chapter,
 	}
 ```
 
+10. Press `Ctrl + Shift + P` to open the command palette
+11. Search for the `Codespaces: Rebuild Container` command and select it
+12. Wait for the dev container to be initialized and opened in your browser
+
 ### Let's code some tests
 
 Using the [backend-development-helper](../src/notebooks/backend-development-helper.dib) notebook, initialize the codebase for the development of a .Net application to test customizations done around Dataverse.
