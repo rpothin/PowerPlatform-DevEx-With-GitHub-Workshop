@@ -65,8 +65,9 @@ In your GitHub Codespaces created in the previous step,
 # 2. Install Dependencies: It installs all the dependencies defined in the package.json file.
 # 3. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
 # 4. Test: It runs unit tests using the 'npm test' command.
-# 5. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
-# 6. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATASERVICE_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
+# 5. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
+# 6. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 7. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATASERVICE_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
 ```
 
 3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
