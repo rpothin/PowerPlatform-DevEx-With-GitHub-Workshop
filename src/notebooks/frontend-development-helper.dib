@@ -101,4 +101,88 @@ Write-Host "👍🏼 Power Platform solution initialized!" -ForegroundColor Gree
 
 #!markdown
 
+To initialize a PCF component, we will use the `pac pck init` command as described below:
+
+```bash
+Initializes a directory with a new Power Apps component framework project
+
+Commands: 
+Usage: pac pcf init [--namespace] [--name] [--template] [--framework] [--outputDirectory] [--run-npm-install]
+
+  --namespace                 The namespace for the component. (alias: -ns)
+  --name                      The name for the component. (alias: -n)
+  --template                  Choose a template for the component. (alias: -t)
+                              Values: field, dataset
+  --framework                 The rendering framework for control. The default value is 'none', which means HTML. (alias: -fw)
+                              Values: none, react
+  --outputDirectory           Output directory (alias: -o)
+  --run-npm-install           Auto run 'npm install' after the control is created. The default value is 'false'. (alias: -npm)
+```
+
+#!pwsh
+
+#!set --name pcfNamespace --value @input:"Please enter a namespace for the PCF component"
+
+#!pwsh
+
+#!set --name pcfName --value @input:"Please enter a name for the PCF component"
+
+#!csharp
+
+using Microsoft.DotNet.Interactive;
+
+var maxAttempts = 3;
+var pcfTemplate = "";
+
+for (int attempt = 1; attempt <= maxAttempts; attempt++)
+{
+    pcfTemplate = await Kernel.GetInputAsync("Please select the template for the PCF component (Values: field, dataset)");
+
+    if (pcfTemplate == "field" || pcfTemplate == "dataset")
+    {
+        break;
+    }
+    else
+    {
+        Console.WriteLine($"Invalid input. Attempt {attempt} of {maxAttempts}.");
+    }
+}
+
+// If maximum of attempts has been reached and the input is still invalid, exit the script with an error message
+if (pcfTemplate != "field" && pcfTemplate != "dataset")
+{
+    if (pcfTemplate != "field" && pcfTemplate != "dataset")
+    {
+        throw new Exception("Invalid input. Maximum attempts reached.");
+    }
+}
+
+#!pwsh
+
+#!set --value @csharp:pcfTemplate --name pcfTemplate
+
+#!pwsh
+
+Write-Host "Validate that all required inputs have been provided..." -ForegroundColor Blue
+
+if (-not $pcfNamespace -or $pcfNamespace -eq "") {
+    Write-Host "Please provide a namespace for the PCF component." -ForegroundColor Red
+    exit 1
+}
+
+if (-not $pcfName -or $pcfName -eq "") {
+    Write-Host "Please provide a name for the PCF component." -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "Move to the src/pcf-components/ folder..." -ForegroundColor Blue
+cd ../pcf-components
+
+Write-Host "Initialize new PCF component..." -ForegroundColor Blue
+pac pcf init --namespace $pcfNamespace --name $pcfName --template $pcfTemplate --framework react --outputDirectory ./ --run-npm-install
+
+Write-Host "👍🏼 PCF component initialized!" -ForegroundColor Green
+
+#!markdown
+
 ## 3. Add the new PCF component to the solution
