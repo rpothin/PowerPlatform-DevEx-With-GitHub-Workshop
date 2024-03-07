@@ -1,0 +1,104 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!markdown
+
+# Frontend development helper
+
+This notebook is a helper for frontend development.
+
+It will provide you with the key elements to setup your frontend development workspace.
+
+#!markdown
+
+## 0. Prerequisites
+
+#!markdown
+
+The command we will use in this notebook are mostly related to [Power Platform CLI](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction).
+
+One of the easiest way to install it with our current configuration if it is not already present is trough the dotnet cli.
+
+#!pwsh
+
+Write-Host "Checking if Power Platform CLI is installed..." -ForegroundColor Blue
+
+try {
+    $powerPlatformCliVersion = pac help
+} catch {
+    Write-Host "Power Platform CLI does not seem installed. Installing..." -ForegroundColor Blue
+    dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+}
+
+Write-Host "👍🏼 Power Platform CLI is installed!" -ForegroundColor Green
+
+#!markdown
+
+## 1. Initialize a Power Platform solution
+
+#!markdown
+
+To initialize a Power Platform solution, we will use the `pac solution init` command as described below:
+
+```bash
+Initializes a directory with a new Dataverse solution project
+
+Commands: 
+Usage: pac solution init --publisher-name --publisher-prefix [--outputDirectory]
+
+  --publisher-name            Name of the Dataverse solution publisher (alias: -pn)
+  --publisher-prefix          Customization prefix value for the Dataverse solution publisher (alias: -pp)
+  --outputDirectory           Output directory (alias: -o)
+```
+
+#!pwsh
+
+#!set --name solutionName --value @input:"Please enter a Power Platform solution name"
+
+#!pwsh
+
+#!set --name publisherName --value @input:"Please enter a publisher name"
+
+#!pwsh
+
+#!set --name publisherPrefix --value @input:"Please enter a publisher prefix"
+
+#!pwsh
+
+Write-Host "Validate that all required inputs have been provided..." -ForegroundColor Blue
+
+if (-not $solutionName -or $solutionName -eq "") {
+    Write-Host "Please provide a solution name." -ForegroundColor Red
+    exit 1
+}
+
+if (-not $publisherName -or $publisherName -eq "") {
+    Write-Host "Please provide a publisher name." -ForegroundColor Red
+    exit 1
+}
+
+if (-not $publisherPrefix -or $publisherPrefix -eq "") {
+    Write-Host "Please provide a publisher prefix." -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "Move to the src/solutions/ folder..." -ForegroundColor Blue
+cd ../solutions
+
+Write-Host "Create a new folder with the provided name for the solution and move into it..." -ForegroundColor Blue
+mkdir $solutionName
+cd $solutionName
+
+Write-Host "Initialization of the Power Platform solution..." -ForegroundColor Blue
+pac solution init --publisher-name $publisherName --publisher-prefix $publisherPrefix
+
+Write-Host "👍🏼 Power Platform solution initialized!" -ForegroundColor Green
+
+#!markdown
+
+## 2. Initialize a new PCF component
+
+#!markdown
+
+## 3. Add the new PCF component to the solution
