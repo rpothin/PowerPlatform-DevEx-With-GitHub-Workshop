@@ -9,7 +9,8 @@
 			"extensions": [
 				"GitHub.copilot",
 				"github.vscode-github-actions",
-				"microsoft-IsvExpTools.powerplatform-vscode"
+				"microsoft-IsvExpTools.powerplatform-vscode",
+				"ms-dotnettools.dotnet-interactive-vscode"
 			]
 		}
 	}
