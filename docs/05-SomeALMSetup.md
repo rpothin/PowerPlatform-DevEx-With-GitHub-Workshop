@@ -59,7 +59,7 @@ In your GitHub Codespaces created in the previous step,
 
 ```yaml
 # This is a GitHub Actions workflow for Continuous Integration (CI) of PCF components.
-# The workflow is triggered on every push only under the "src/pcf-components" folder to a branch that is not main.
+# The workflow is triggered on every push only under the "src/pcf-components" folder to the main branch.
 # 
 # The workflow performs the following steps:
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
