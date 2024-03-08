@@ -46,7 +46,11 @@ In your GitHub Codespaces created in the previous chapter,
 Using the [frontend-development-helper](../src/notebooks/frontend-development-helper.dib) notebook, initialize the codebase for the development of a PCF component.
 
 You can find below some ideas of simple PCF components you could develop during this exercise:
-- ...
+- Present the Interpol Red Notice status of a contact using the [Interpol Notices API](https://interpol.api.bund.dev/)
+- Present the reputation of the email address of a contact using the [EmailRep API](https://emailrep.io/)
+- Present details about the website of a company (_in the account table_) using the [LinkPreview API](https://www.linkpreview.net/)
+- Present security details regarding the domain of the website of a company (_in the account table_) using the [FullHunt API](https://api-docs.fullhunt.io/)
+- Use the [Faker API](https://fakerapi.it/en) or the [Random Data API](https://random-data-api.com/) combined with an environment variable (_as a flag_) to simplify the generation of fake data for testing purposes
 
 ## Backend development track
 
