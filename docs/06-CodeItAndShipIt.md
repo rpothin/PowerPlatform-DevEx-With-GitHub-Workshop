@@ -31,7 +31,8 @@ In your GitHub Codespaces created in the previous chapter,
 				"GitHub.copilot",
 				"github.vscode-github-actions",
 				"microsoft-IsvExpTools.powerplatform-vscode",
-				"ms-dotnettools.dotnet-interactive-vscode"
+				"ms-dotnettools.dotnet-interactive-vscode",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}
@@ -43,14 +44,19 @@ In your GitHub Codespaces created in the previous chapter,
 
 ### Let's code a PCF component
 
-Using the [frontend-development-helper](../src/notebooks/frontend-development-helper.dib) notebook, initialize the codebase for the development of a PCF component.
+1. Using the [frontend-development-helper](../src/notebooks/frontend-development-helper.dib) notebook, initialize the codebase for the development of a PCF component.
+2. Develop a simple PCF component using all the support you can get from GitHub Copilot (_code suggestion, code explaination, documentation, fix issues..._).
+3. Test your PCF component from your GitHub Codespace - _[Debug code components](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/debugging-custom-controls)_.
+4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and deploy your solution with the PCF component to your Power Platform environment_.
+5. Configure the PCF component in a form in your Power Platform environment and test it.
 
-You can find below some ideas of simple PCF components you could develop during this exercise:
-- Present the Interpol Red Notice status of a contact using the [Interpol Notices API](https://interpol.api.bund.dev/)
-- Present the reputation of the email address of a contact using the [EmailRep API](https://emailrep.io/)
-- Present details about the website of a company (_in the account table_) using the [LinkPreview API](https://www.linkpreview.net/)
-- Present security details regarding the domain of the website of a company (_in the account table_) using the [FullHunt API](https://api-docs.fullhunt.io/)
-- Use the [Faker API](https://fakerapi.it/en) or the [Random Data API](https://random-data-api.com/) combined with an environment variable (_as a flag_) to simplify the generation of fake data for testing purposes
+> [!NOTE]
+> You can find below some ideas of simple PCF components you could develop during this exercise:
+> - Present the Interpol Red Notice status of a contact using the [Interpol Notices API](https://interpol.api.bund.dev/)
+> - Present the reputation of the email address of a contact using the [EmailRep API](https://emailrep.io/)
+> - Present details about the website of a company (_in the account table_) using the [LinkPreview API](https://www.linkpreview.net/)
+> - Present security details regarding the domain of the website of a company (_in the account table_) using the [FullHunt API](https://api-docs.fullhunt.io/)
+> - Use the [Faker API](https://fakerapi.it/en) or the [Random Data API](https://random-data-api.com/) combined with an environment variable (_as a flag_) to simplify the generation of fake data for testing purposes
 
 ## Backend development track
 
@@ -76,7 +82,8 @@ In your GitHub Codespaces created in the previous chapter,
 				"GitHub.copilot",
 				"github.vscode-github-actions",
 				"microsoft-IsvExpTools.powerplatform-vscode",
-				"ms-dotnettools.dotnet-interactive-vscode"
+				"ms-dotnettools.dotnet-interactive-vscode",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}
