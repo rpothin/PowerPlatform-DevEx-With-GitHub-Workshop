@@ -10,6 +10,11 @@ This notebook is a helper for frontend development.
 
 It will provide you with the key elements to setup your frontend development workspace.
 
+> **Note**
+> The Microsoft documentation page used as reference to build this notebook are:
+> - [Create and build a code component](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/create-custom-controls-using-pcf)
+> - [Package a code component](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/import-custom-controls)
+
 #!markdown
 
 ## 0. Prerequisites
@@ -32,6 +37,12 @@ try {
 }
 
 Write-Host "👍🏼 Power Platform CLI is installed!" -ForegroundColor Green
+
+#!pwsh
+
+Write-Host "Get the absolute path of the current notebook parent folder..." -ForegroundColor Blue
+$notebookPath = (Get-Location).Path
+Write-Host "👍🏼 The absolute path of the current notebook parent folder is $notebookPath" -ForegroundColor Green
 
 #!markdown
 
@@ -84,7 +95,13 @@ if (-not $publisherPrefix -or $publisherPrefix -eq "") {
 }
 
 Write-Host "Move to the src/solutions/ folder..." -ForegroundColor Blue
-cd ../solutions
+cd $notebookPath/../solutions
+
+Write-Host "Check if the Power Platform solution already exists..." -ForegroundColor Blue
+if (Test-Path $solutionName) {
+    Write-Host "👍🏼 Power Platform solution already exists!" -ForegroundColor Green
+    exit 0 # Exit with success
+}
 
 Write-Host "Create a new folder with the provided name for the solution and move into it..." -ForegroundColor Blue
 mkdir $solutionName
@@ -176,7 +193,24 @@ if (-not $pcfName -or $pcfName -eq "") {
 }
 
 Write-Host "Move to the src/pcf-components/ folder..." -ForegroundColor Blue
-cd ../pcf-components
+cd $notebookPath/../pcf-components
+
+Write-Host "Check if the PCF component namespace already exists..." -ForegroundColor Blue
+if (Test-Path $pcfNamespace) {
+    Write-Host "👍🏼 PCF component namespace already exists!" -ForegroundColor Green
+} else {
+    Write-Host "Create a new folder for the PCF component namespace..." -ForegroundColor Blue
+    mkdir $pcfNamespace
+}
+
+Write-Host "Move to the PCF component namespace folder..." -ForegroundColor Blue
+cd $pcfNamespace
+
+Write-Host "Check if the PCF component already exists..." -ForegroundColor Blue
+if (Test-Path $pcfName) {
+    Write-Host "👍🏼 PCF component already exists!" -ForegroundColor Green
+    exit 0 # Exit with success
+}
 
 Write-Host "Initialize new PCF component..." -ForegroundColor Blue
 pac pcf init --namespace $pcfNamespace --name $pcfName --template $pcfTemplate --framework react --outputDirectory ./ --run-npm-install
@@ -186,3 +220,26 @@ Write-Host "👍🏼 PCF component initialized!" -ForegroundColor Green
 #!markdown
 
 ## 3. Add the new PCF component to the solution
+
+#!markdown
+
+To add the new PCF component as a reference to the solution, we will use the `pac solution add-reference` command as described below:
+
+```bash
+Adds a reference from the project in the current directory to the project at 'path'
+
+Commands: 
+Usage: pac solution add-reference --path
+
+  --path                      The path to the referenced project (alias: -p)
+```
+
+#!pwsh
+
+Write-Host "Move to the src/solutions/$solutionName folder..." -ForegroundColor Blue
+cd $notebookPath/../solutions/$solutionName
+
+Write-Host "Add the PCF component to the solution..." -ForegroundColor Blue
+pac solution add-reference --path $notebookPath/../pcf-components/$pcfNamespace
+
+Write-Host "👍🏼 PCF component added to the solution!" -ForegroundColor Green
