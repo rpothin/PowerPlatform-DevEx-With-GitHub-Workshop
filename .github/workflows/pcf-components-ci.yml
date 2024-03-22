@@ -43,11 +43,8 @@ jobs:
         - name: Test
           run: npm test
     
-        - name: Setup msbuild
-          uses: microsoft/setup-msbuild@v2
-    
-        - name: Pack solution
-          run: msbuild src/solutions/PCFComponents/PCFComponents.csproj /t:pack /p:Configuration=Release
+        - name: Build solution
+          run: dotnet build src/solutions/PCFComponents/PCFComponents.csproj --configuration Release
     
         - name: Deploy
           uses: microsoft/powerplatform-actions/import-solution@main
