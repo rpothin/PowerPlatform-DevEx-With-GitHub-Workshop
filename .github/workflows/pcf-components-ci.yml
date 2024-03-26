@@ -39,8 +39,9 @@ jobs:
           id: list_changed_files
           run: |
             echo "List of changed files:"
-            git diff --name-only ${{ github.event.before }} ${{ github.sha }} | findstr /R "^src/pcf-components/.*"
-            echo "::set-output name=changed_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | findstr /R "^src/pcf-components/.*")"
+            git fetch origin ${{ github.sha }}:refs/remotes/origin/${{ github.sha }}
+            git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*"
+            echo "::set-output name=changed_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")"
           shell: bash
 
         - name: Set updated PCF component
