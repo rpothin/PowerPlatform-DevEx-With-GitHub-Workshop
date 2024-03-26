@@ -1,5 +1,5 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import { HelloWorld, IHelloWorldProps } from "./HelloWorld";
+import { InterpolRedNoticeStatusOutput, IInterpolRedNoticeStatusOutputProps } from "./InterpolRedNoticeStatusOutput";
 import * as React from "react";
 
 export class InterpolRedNoticeStatus implements ComponentFramework.ReactControl<IInputs, IOutputs> {
@@ -32,9 +32,14 @@ export class InterpolRedNoticeStatus implements ComponentFramework.ReactControl<
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHelloWorldProps = { name: 'Hello, World!' };
+        // Get the first name and last name from the context
+        const firstName = context.parameters.firstName.raw || '';
+        const lastName = context.parameters.lastName.raw || '';
+
+        // Create the props for the InterpolRedNoticeStatusOutput component
+        const props: IInterpolRedNoticeStatusOutputProps = { firstName, lastName };
         return React.createElement(
-            HelloWorld, props
+            InterpolRedNoticeStatusOutput, props
         );
     }
 

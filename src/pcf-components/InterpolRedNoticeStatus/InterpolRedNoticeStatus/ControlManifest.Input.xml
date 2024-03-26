@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="InterpolRedNoticeStatus" constructor="InterpolRedNoticeStatus" version="0.0.1" display-name-key="InterpolRedNoticeStatus" description-key="InterpolRedNoticeStatus description" control-type="virtual" >
+  <control namespace="InterpolRedNoticeStatus" constructor="InterpolRedNoticeStatus" version="0.0.1" display-name-key="InterpolRedNoticeStatus" description-key="Validate the Interpol Red Notice status of a person based on its first name and last name" control-type="virtual" >
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -11,14 +11,12 @@
       <external-service-usage enabled="false">
       </external-service-usage>
     -->
-    <external-service-usage enabled="false">
-      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
-      <domain></domain>
-      <domain></domain>
-      -->
+    <external-service-usage enabled="true">
+      <domain>ws-public.interpol.int</domain>
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="firstName" display-name-key="FirstName_Display_Key" description-key="FirstName_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="lastName" display-name-key="LastName_Display_Key" description-key="LastName_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:
