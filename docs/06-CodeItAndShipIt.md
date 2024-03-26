@@ -45,6 +45,10 @@ In your GitHub Codespaces created in the previous chapter,
 ### Let's code a PCF component
 
 1. Using the [frontend-development-helper](../src/notebooks/frontend-development-helper.dib) notebook, initialize the codebase for the development of a PCF component.
+
+> [!WARNING]
+> The solution name considered during the configuration of the GitHub workflow for this track was `PCFComponents`, so you will need to use this name when prompted by the notebook.
+
 2. Develop a simple PCF component using all the support you can get from GitHub Copilot (_code suggestion, code explaination, documentation, fix issues..._).
 3. Test your PCF component from your GitHub Codespace - _[Debug code components](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/debugging-custom-controls)_.
 4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and deploy your solution with the PCF component to your Power Platform environment_.
