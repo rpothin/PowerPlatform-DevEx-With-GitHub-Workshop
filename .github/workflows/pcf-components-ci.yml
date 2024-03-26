@@ -46,7 +46,7 @@ jobs:
           run: |
             echo "List of changed files:"
             git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*"
-            echo "::set-output name=changed_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")"
+            echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")" >> $GITHUB_ENV
           shell: bash
 
         - name: Set updated PCF component
