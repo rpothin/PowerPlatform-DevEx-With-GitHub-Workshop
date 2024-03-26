@@ -95,7 +95,12 @@ if (-not $publisherPrefix -or $publisherPrefix -eq "") {
 }
 
 Write-Host "Move to the src/solutions/ folder..." -ForegroundColor Blue
-cd $notebookPath/../solutions
+$solutionsPath = Join-Path $notebookPath "../solutions"
+if (!(Test-Path -Path $solutionsPath)) {
+    Write-Host "src/solutions/ folder does not exist. Creating..." -ForegroundColor Blue
+    New-Item -ItemType Directory -Path $solutionsPath -Force | Out-Null
+}
+cd $solutionsPath
 
 Write-Host "Check if the Power Platform solution already exists..." -ForegroundColor Blue
 if (Test-Path $solutionName) {
@@ -146,6 +151,8 @@ Usage: pac pcf init [--namespace] [--name] [--template] [--framework] [--outputD
 
 #!csharp
 
+// Get the PCF template for its creation
+// The user has a maximum of 3 attempts to provide a valid input
 using Microsoft.DotNet.Interactive;
 
 var maxAttempts = 3;
@@ -193,7 +200,12 @@ if (-not $pcfName -or $pcfName -eq "") {
 }
 
 Write-Host "Move to the src/pcf-components/ folder..." -ForegroundColor Blue
-cd $notebookPath/../pcf-components
+$pcfComponentsPath = Join-Path $notebookPath "../pcf-components"
+if (!(Test-Path -Path $pcfComponentsPath)) {
+    Write-Host "src/pcf-components/ folder does not exist. Creating..." -ForegroundColor Blue
+    New-Item -ItemType Directory -Path $pcfComponentsPath -Force | Out-Null
+}
+cd $pcfComponentsPath
 
 Write-Host "Check if the PCF component namespace already exists..." -ForegroundColor Blue
 if (Test-Path $pcfNamespace) {
