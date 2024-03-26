@@ -73,7 +73,8 @@ jobs:
           uses: microsoft/setup-msbuild@v2
     
         - name: Pack solution
-          run: msbuild src/solutions/PCFComponents /t:pack /p:Configuration=Release
+          run: msbuild /t:build /restore
+          working-directory: src/solutions/PCFComponents
     
         - name: Deploy
           uses: microsoft/powerplatform-actions/import-solution@main
