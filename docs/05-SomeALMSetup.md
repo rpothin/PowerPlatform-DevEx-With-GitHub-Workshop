@@ -7,7 +7,7 @@
 ## Configure an environment in your repository
 
 > [!IMPORTANT]
-> At this point, you will need to have at least one Power Platform environment available with an application user configured with the "System Administrator" role and access to its client id and secret.
+> At this point, you will need to have at least one Power Platform environment available with an application user configured with the "System Administrator" role and access to its tenant id, client id and secret.
 
 In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop,
 
@@ -17,17 +17,21 @@ In your repository created from this GitHub repository template in the [chapter 
 4. In the `Name` field, enter `Sandbox`
 5. Click on the `Configure environment` button
 6. In the `Environment secrets` section, click on the `Add secret` button
-7. In the `Name` field, enter `CLIENT_ID`
-8. In the `Value` field, enter the client id of the application user with the "System Administrator" role in the considered Power Platform environment
-9. Click on the `Add secret` button
+7. In the `Name` field, enter `TENANT_ID`
+8. In the `Value` field, enter the tenant id of the application user with the "System Administrator" role in the considered Power Platform environment
+9.  Click on the `Add secret` button
 10. In the `Environment secrets` section, click on the `Add secret` button
-11. In the `Name` field, enter `CLIENT_SECRET`
-12. In the `Value` field, enter the client secret of the application user with the "System Administrator" role in the considered Power Platform environment
+11. In the `Name` field, enter `CLIENT_ID`
+12. In the `Value` field, enter the client id of the application user with the "System Administrator" role in the considered Power Platform environment
 13. Click on the `Add secret` button
-14. In the `Environment variables` section, click on the `Add variable` button
-15. In the `Name` field, enter `DATAVERSE_ENVIRONMENT_URL`
-16. In the `Value` field, enter the URL of the considered Power Platform environment
-17. Click on the `Add variable` button
+14. In the `Environment secrets` section, click on the `Add secret` button
+15. In the `Name` field, enter `CLIENT_SECRET`
+16. In the `Value` field, enter the client secret of the application user with the "System Administrator" role in the considered Power Platform environment
+17. Click on the `Add secret` button
+18. In the `Environment variables` section, click on the `Add variable` button
+19. In the `Name` field, enter `DATAVERSE_ENVIRONMENT_URL`
+20. In the `Value` field, enter the URL of the considered Power Platform environment
+21. Click on the `Add variable` button
 
 ## Start and setup your GitHub Codespace
 
