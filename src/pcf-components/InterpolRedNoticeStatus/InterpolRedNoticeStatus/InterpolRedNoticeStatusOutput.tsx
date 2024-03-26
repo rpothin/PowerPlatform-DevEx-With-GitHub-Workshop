@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
 
+/**
+ * Represents the props for the InterpolRedNoticeStatusOutput component.
+ */
 export interface IInterpolRedNoticeStatusOutputProps {
   firstName: string;
   lastName: string;
 }
 
+/**
+ * Represents the output component for displaying Interpol Red Notice status.
+ */
 export class InterpolRedNoticeStatusOutput extends React.Component<IInterpolRedNoticeStatusOutputProps, { outputMessage: string }> {
   constructor(props: IInterpolRedNoticeStatusOutputProps) {
     super(props);
@@ -13,12 +19,21 @@ export class InterpolRedNoticeStatusOutput extends React.Component<IInterpolRedN
     this.fetchData(this.props.firstName, this.props.lastName);
   }
 
+  /**
+   * Updates the component when the first name or last name props change.
+   * @param prevProps - The previous props.
+   */
   componentDidUpdate(prevProps: IInterpolRedNoticeStatusOutputProps) {
     if (prevProps.firstName !== this.props.firstName || prevProps.lastName !== this.props.lastName) {
       this.fetchData(this.props.firstName, this.props.lastName);
     }
   }
 
+  /**
+   * Fetches data from the Interpol API based on the provided first name and last name.
+   * @param firstName - The first name.
+   * @param lastName - The last name.
+   */
   fetchData(firstName: string, lastName: string) {
     fetch(`https://ws-public.interpol.int/notices/v1/red?name=${firstName}&forename=${lastName}&page=1&resultPerPage=200`)
       .then(response => response.json())
