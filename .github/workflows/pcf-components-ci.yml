@@ -8,7 +8,7 @@
 # 4. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
 # 5. Test: It runs unit tests using the 'npm test' command.
 # 6. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
-# 7. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 7. Pack solution: Run msbuild after installing it on the "src/solutions/PCFComponents" folder to create the solution zip file.
 # 8. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
 
 name: PCF Components CI
@@ -44,9 +44,9 @@ jobs:
         - name: List changed files
           id: list_changed_files
           run: |
-            echo "List of changed files:"
-            git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*"
-            echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")" >> $GITHUB_ENV
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")
+            echo "List of changed files: $CHANGED_FILES"
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
           shell: bash
 
         - name: Set updated PCF component
