@@ -3,12 +3,13 @@
 # 
 # The workflow performs the following steps:
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
-# 2. Install Dependencies: It installs all the dependencies defined in the package.json file.
-# 3. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
-# 4. Test: It runs unit tests using the 'npm test' command.
-# 5. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
-# 6. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
-# 7. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
+# 3. Identify the updated PCF component by checking the change files in the "src/pcf-components" folder and store its name in an environment variable to be used in the subsequent steps for the working directory.
+# 3. Install Dependencies: It installs all the dependencies defined in the package.json file.
+# 4. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
+# 5. Test: It runs unit tests using the 'npm test' command.
+# 6. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
+# 7. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 8. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
 
 name: PCF Components CI
 
@@ -33,15 +34,26 @@ jobs:
           uses: actions/setup-node@v2
           with:
             node-version: '14'
+
+        - name: Identify Updated PCF Component
+          id: identify-updated-pcf-component
+          run: |
+            echo "Identifying the updated PCF component..."
+            updated_pcf_component=$(git diff --name-only HEAD^ HEAD | grep 'src/pcf-components/' | cut -d'/' -f3 | uniq)
+            echo "Updated PCF component: $updated_pcf_component"
+            echo "::set-env name=UPDATED_PCF_COMPONENT::$updated_pcf_component"
     
         - name: Install Dependencies
           run: npm install
+          working-directory: src/pcf-components/${{ env.UPDATED_PCF_COMPONENT }}
     
         - name: Build
           run: npm run build
+          working-directory: src/pcf-components/${{ env.UPDATED_PCF_COMPONENT }}
     
         - name: Test
           run: npm test
+          working-directory: src/pcf-components/${{ env.UPDATED_PCF_COMPONENT }}
     
         - name: Setup msbuild
           uses: microsoft/setup-msbuild@v2
