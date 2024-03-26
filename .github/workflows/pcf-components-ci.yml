@@ -35,11 +35,16 @@ jobs:
           with:
             node-version: '14'
 
+        - name: Fetch commits
+          run: |
+            git fetch origin ${{ github.event.before }}:refs/remotes/origin/${{ github.event.before }}
+            git fetch origin ${{ github.sha }}:refs/remotes/origin/${{ github.sha }}
+          shell: bash
+
         - name: List changed files
           id: list_changed_files
           run: |
             echo "List of changed files:"
-            git fetch origin ${{ github.sha }}:refs/remotes/origin/${{ github.sha }}
             git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*"
             echo "::set-output name=changed_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")"
           shell: bash
