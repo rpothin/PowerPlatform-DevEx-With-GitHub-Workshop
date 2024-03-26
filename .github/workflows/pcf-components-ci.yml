@@ -3,7 +3,7 @@
 # 
 # The workflow performs the following steps:
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
-# 3. Identify the updated PCF component by checking the change files in the "src/pcf-components" folder and store its name in an environment variable to be used in the subsequent steps for the working directory.
+# 3. Using tj-actions/changed-files list the changed files. And then go through this list of changed files and identify the PCF component that has been updated and set it as an environment variable.
 # 3. Install Dependencies: It installs all the dependencies defined in the package.json file.
 # 4. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
 # 5. Test: It runs unit tests using the 'npm test' command.
@@ -35,13 +35,21 @@ jobs:
           with:
             node-version: '14'
 
-        - name: Identify Updated PCF Component
-          id: identify-updated-pcf-component
+        - name: List changed files
+          id: changed-files
+          uses: tj-actions/changed-files@v2
+
+        - name: Identify the changed PCF Component in the changed file
           run: |
-            echo "Identifying the updated PCF component..."
-            updated_pcf_component=$(git diff --name-only HEAD~1 HEAD | grep 'src/pcf-components/' | cut -d'/' -f3 | uniq)
-            echo "Updated PCF component: $updated_pcf_component"
-            echo "::set-env name=UPDATED_PCF_COMPONENT::$updated_pcf_component"
+            echo "Changed files: ${{ steps.changed-files.outputs.files }}"
+            for file in ${{ steps.changed-files.outputs.files }}; do
+              if [[ $file == src/pcf-components/* ]]; then
+                UPDATED_PCF_COMPONENT=$(echo $file | cut -d'/' -f3)
+                echo "Updated PCF Component: $UPDATED_PCF_COMPONENT"
+                echo "UPDATED_PCF_COMPONENT=$UPDATED_PCF_COMPONENT" >> $GITHUB_ENV
+                break
+              fi
+            done
           shell: bash
     
         - name: Install Dependencies
