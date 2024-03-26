@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react';
 
 /**
- * Represents the props for the InterpolRedNoticeStatusOutput component.
+ * Represents the props for the InterpolRedNoticeStatusOutput component. Small update to trigger GitHub workflow.
  */
 export interface IInterpolRedNoticeStatusOutputProps {
   firstName: string;
