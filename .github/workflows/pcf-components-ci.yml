@@ -42,7 +42,6 @@ jobs:
           shell: bash
 
         - name: List changed files
-          id: list_changed_files
           run: |
             CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^src/pcf-components/.*")
             echo "List of changed files: $CHANGED_FILES"
@@ -50,11 +49,10 @@ jobs:
           shell: bash
 
         - name: Set updated PCF component
-          id: set_updated_pcf_component
           run: |
             echo "List of changed files:"
-            echo "${{ steps.list_changed_files.outputs.changed_files }}"
-            UPDATED_PCF_COMPONENT=$(echo "${{ steps.list_changed_files.outputs.changed_files }}" | cut -d'/' -f3)
+            echo ${{ env.changed_files }}
+            UPDATED_PCF_COMPONENT=$(echo "${{ env.changed_files }}" | cut -d'/' -f3)
             echo "Updated PCF component: $UPDATED_PCF_COMPONENT"
             echo "UPDATED_PCF_COMPONENT=$UPDATED_PCF_COMPONENT" >> $GITHUB_ENV
           shell: bash
