@@ -67,12 +67,14 @@ In your GitHub Codespaces created in the previous step,
 # 
 # The workflow performs the following steps:
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
-# 2. Install Dependencies: It installs all the dependencies defined in the package.json file.
-# 3. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
-# 4. Test: It runs unit tests using the 'npm test' command.
-# 5. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
-# 6. Pack solution: Run msbuild after installing it on the cdsproj file located under the "src/solutions/PCFComponents" folder to create the solution zip file.
-# 7. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
+# 3. List the changed files under the "src/pcf-components" folder in the latest commit and identify the parent folder of the changed files to get the name of changed PCF component and put it in the environment variable.
+# 3. Install Dependencies: It installs all the dependencies defined in the package.json file.
+# 4. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
+# 5. Test: It runs unit tests using the 'npm test' command.
+# 6. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
+# 7. Pack solution: Run msbuild after installing it on the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 8. Store the packed solution zip file as an artifact.
+# 9. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables.
 ```
 
 3. Press `Enter` and let you be guided by the GitHub Copilot to complete the workflow file
