@@ -39,7 +39,7 @@ jobs:
           id: identify-updated-pcf-component
           run: |
             echo "Identifying the updated PCF component..."
-            updated_pcf_component=$(git diff --name-only HEAD^ HEAD | grep 'src/pcf-components/' | cut -d'/' -f3 | uniq)
+            updated_pcf_component=$(git diff --name-only HEAD~1 HEAD | grep 'src/pcf-components/' | cut -d'/' -f3 | uniq)
             echo "Updated PCF component: $updated_pcf_component"
             echo "::set-env name=UPDATED_PCF_COMPONENT::$updated_pcf_component"
           shell: bash
