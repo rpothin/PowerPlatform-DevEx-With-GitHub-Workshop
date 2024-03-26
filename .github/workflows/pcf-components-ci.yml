@@ -54,9 +54,9 @@ jobs:
           run: |
             echo "List of changed files:"
             echo "${{ steps.list_changed_files.outputs.changed_files }}"
-            export UPDATED_PCF_COMPONENT=$(echo "${{ steps.list_changed_files.outputs.changed_files }}" | cut -d'/' -f3)
+            UPDATED_PCF_COMPONENT=$(echo "${{ steps.list_changed_files.outputs.changed_files }}" | cut -d'/' -f3)
             echo "Updated PCF component: $UPDATED_PCF_COMPONENT"
-            echo "::set-env name=UPDATED_PCF_COMPONENT::$UPDATED_PCF_COMPONENT"
+            echo "UPDATED_PCF_COMPONENT=$UPDATED_PCF_COMPONENT" >> $GITHUB_ENV
           shell: bash
     
         - name: Install Dependencies
