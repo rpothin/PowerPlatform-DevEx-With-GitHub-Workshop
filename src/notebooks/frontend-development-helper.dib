@@ -119,6 +119,54 @@ Write-Host "👍🏼 Power Platform solution initialized!" -ForegroundColor Gree
 
 #!markdown
 
+### 1.1 Set the solution package type to Managed
+
+#!markdown
+
+In the cdsproj file generated in the previous step, you can set the package type to Managed by setting the value of the <SolutionPackageType> element (_under <PropertyGroup>_) to `Managed`. This will ensure that the solution package is managed and cannot be customized by the customers.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    ...
+    <PropertyGroup>
+        <SolutionPackageType>Managed</SolutionPackageType>
+        <SolutionPackageEnableLocalization>false</SolutionPackageEnableLocalization>
+    </PropertyGroup>
+    ...
+</Project>
+```
+
+#!pwsh
+
+$solutionsPath = Join-Path $notebookPath "../solutions"
+
+#!pwsh
+
+ls /workspaces/PowerPlatform-DevEx-With-GitHub-Workshop/src/solutions/PCFComponents/
+
+#!pwsh
+
+Write-Host "Update the cdsproj file to enable the solution package localization..." -ForegroundColor Blue
+$cdsprojPath = "$solutionsPath/$solutionName/$solutionName.cdsproj"
+
+# Define the old and new text
+$oldText = "<!--`n  <PropertyGroup>`n    <SolutionPackageType>Managed</SolutionPackageType>`n    <SolutionPackageEnableLocalization>false</SolutionPackageEnableLocalization>`n  </PropertyGroup>`n  -->"
+$newText = "<PropertyGroup>`n    <SolutionPackageType>Managed</SolutionPackageType>`n    <!-- <SolutionPackageEnableLocalization>false</SolutionPackageEnableLocalization> -->`n  </PropertyGroup>"
+
+# Read the file content
+$content = Get-Content -Path $cdsprojPath -Raw
+
+# Replace the old text with the new text
+$content = $content -replace [regex]::Escape($oldText), $newText
+
+# Write the new content back to the file
+Set-Content -Path $cdsprojPath -Value $content
+
+Write-Host "👍🏼 The cdsproj file has been updated!" -ForegroundColor Green
+
+#!markdown
+
 ## 2. Initialize a new PCF component
 
 #!markdown
