@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{458c7ab5-eaeb-ee11-a1fd-000d3a0a2c19}</formid>
+    <IntroducedVersion>1.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="F931FFE2-B873-473F-8F95-9502F0AA3F5E" name="tab_1" showlabel="false" labelid="{cca2b6b8-fa15-4668-b921-146b501bfa33}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section id="0C655D4E-C6E3-424E-9AF5-71E72D30D12E" name="tab_1_column_1_section_1" columns="1" showlabel="false" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{243f2759-f768-4111-98b4-44d4fd77f0ec}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="542FBFBE-0E4C-496C-8012-555DE6581923" labelid="{dce83992-25da-489a-9e0f-2c5f6fabbbc8}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4b575bba-4edb-4cf1-829d-96b1e24dcfd5}" locklevel="0" colspan="1" rowspan="1" labelid="{c5107771-7c11-4f4d-93c1-aea46591bd3c}">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="rpo_firstname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="rpo_firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b26ad291-657e-47d0-8a11-d58990c5f2b1}" locklevel="0" colspan="1" rowspan="1" labelid="{e9a6b0a6-b279-468f-8daf-dc3bd4559de5}">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="rpo_lastname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="rpo_lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d3c52461-dd52-4a57-8f76-94df95115f62}" locklevel="0" colspan="1" rowspan="1" showlabel="false" labelid="{36bb3623-45c7-48ef-a967-128bb68013e4}">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="rpo_firstname" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="rpo_firstname" disabled="false" uniqueid="{ecc8b046-13b2-41b8-8a9f-44f4dcd73633}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="02DECBA0-3AE2-484D-A19F-C5353AF4F4F2" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{0e7a905b-f8b5-4f60-a94c-baa4b80ae182}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="266FE48D-4D04-4E9A-8C5A-7DEF9A2F059B" labelid="{87587380-71b7-4146-9b29-cf1b866e8a92}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="46FD66EA-B686-41D9-AAE0-C565BD78EC1F" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{7e6c687f-af3d-4c96-af59-03d7a3097da9}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="07C04A4E-A482-45CC-BAB7-7FCA3CD02938" labelid="{fccec975-57f1-405d-a47e-40e0dd79c70c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{ecc8b046-13b2-41b8-8a9f-44f4dcd73633}">
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>rpo_firstname</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="demo_InterpolRedNoticeStatus.InterpolRedNoticeStatus">
+            <parameters>
+              <firstName type="SingleLine.Text">rpo_firstname</firstName>
+              <lastName type="SingleLine.Text">rpo_lastname</lastName>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="demo_InterpolRedNoticeStatus.InterpolRedNoticeStatus">
+            <parameters>
+              <firstName type="SingleLine.Text">rpo_firstname</firstName>
+              <lastName type="SingleLine.Text">rpo_lastname</lastName>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="demo_InterpolRedNoticeStatus.InterpolRedNoticeStatus">
+            <parameters>
+              <firstName type="SingleLine.Text">rpo_firstname</firstName>
+              <lastName type="SingleLine.Text">rpo_lastname</lastName>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Person quick create form" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>
