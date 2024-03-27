@@ -93,7 +93,7 @@ jobs:
             app-id: ${{ secrets.CLIENT_ID }}
             client-secret: ${{ secrets.CLIENT_SECRET }}
             tenant-id: ${{ secrets.TENANT_ID }}
-            environment-url: ${{ variables.DATAVERSE_ENVIRONMENT_URL }}
+            environment-url: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
             solution-file: src/solutions/PCFComponents/bin/Release/PCFComponents.zip
             force-overwrite: true
             publish-changes: true
