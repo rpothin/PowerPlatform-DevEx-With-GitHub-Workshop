@@ -2,6 +2,7 @@
 # The workflow is triggered on every push only under the "src/pcf-components" folder to the main branch.
 # 
 # The workflow performs the following steps:
+# 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
 # 3. List the changed files under the "src/pcf-components" folder in the latest commit and identify the parent folder of the changed files to get the name of changed PCF component and put it in the environment variable.
 # 3. Install Dependencies: It installs all the dependencies defined in the package.json file.
@@ -29,6 +30,10 @@ jobs:
             name: 'Sandbox'
     
         steps:
+        - name: Enable git long paths
+          run: git config --system core.longpaths true
+          shell: bash
+        
         - name: Checkout repository
           uses: actions/checkout@v2
     

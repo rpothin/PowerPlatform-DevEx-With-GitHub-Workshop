@@ -66,6 +66,7 @@ In your GitHub Codespaces created in the previous step,
 # The workflow is triggered on every push only under the "src/pcf-components" folder to the main branch.
 # 
 # The workflow performs the following steps:
+# 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
 # 1. Setup: It sets up the required environment with the necessary versions of Node.js and npm.
 # 3. List the changed files under the "src/pcf-components" folder in the latest commit and identify the parent folder of the changed files to get the name of changed PCF component and put it in the environment variable.
 # 3. Install Dependencies: It installs all the dependencies defined in the package.json file.
@@ -105,6 +106,7 @@ In your GitHub Codespaces created in the previous step,
 # The workflow is triggered on every push only under the "src/dataverse-api-testing" folder to the main branch.
 # 
 # The workflow performs the following steps:
+# 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
 # 1. Setup: It sets up the required environment with .NET 8.0.
 # 2. Restore Dependencies: It restores all the dependencies and tools of the .NET project using the 'dotnet restore' command.
 # 3. Test: It runs API tests using the 'dotnet test' command using the "DATAVERSE_ENVIRONMENT_URL", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and variables in the repository to be able to use the Dataverse API in the considered Test environment.
