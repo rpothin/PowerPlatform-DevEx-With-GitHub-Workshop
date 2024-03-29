@@ -1,0 +1,44 @@
+{
+  "EnvironmentVariables": [
+    {
+      "SchemaName": "rpo_CuddleHappinessPoints",
+      "Value": "",
+      "DefaultValue": "1000",
+      "Name": {
+        "Default": "Cuddle Happiness Points",
+        "ByLcid": {
+          "1033": "Cuddle Happiness Points"
+        }
+      }
+    },
+    {
+      "SchemaName": "rpo_PetInitialHappinessPoints",
+      "Value": "",
+      "DefaultValue": "100000",
+      "Name": {
+        "Default": "Pet Initial Happiness Points",
+        "ByLcid": {
+          "1033": "Pet Initial Happiness Points"
+        }
+      }
+    },
+    {
+      "SchemaName": "rpo_PetInitialLifePoints",
+      "Value": "",
+      "DefaultValue": "100000",
+      "Name": {
+        "Default": "Pet Initial Life Points",
+        "ByLcid": {
+          "1033": "Pet Initial Life Points"
+        }
+      }
+    }
+  ],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "rpo_sharedcommondataserviceforapps_4171a",
+      "ConnectionId": "",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    }
+  ]
+}

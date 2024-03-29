@@ -1,0 +1,126 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "rpo_sharedcommondataserviceforapps_4171a"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "Pet Initial Happiness Points (rpo_PetInitialHappinessPoints)": {
+          "defaultValue": 100000,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "rpo_PetInitialHappinessPoints"
+          }
+        },
+        "Cuddle Happiness Points (rpo_CuddleHappinessPoints)": {
+          "defaultValue": 1000,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "rpo_CuddleHappinessPoints"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added_in_the_Cuddles_table": {
+          "metadata": {
+            "operationMetadataId": "2f3489ad-27c3-4685-946e-89fc1e733a82"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "rpo_cuddle",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "2b352d9e-82ed-ee11-a1fd-000d3a0a2c19"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_regarding_Pet": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "recordId": "@triggerBody()?['_regardingobjectid_value']",
+              "$select": "rpo_happinesspoints,rpo_name"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Update_regarding_Pet": {
+          "runAfter": {
+            "Get_regarding_Pet": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "recordId": "@triggerBody()?['_regardingobjectid_value']",
+              "item/rpo_happinesspoints": "@if(\r\n   greater(\r\n      add(\r\n         body('Get_regarding_Pet')?['rpo_happinesspoints'],\r\n         parameters('Cuddle Happiness Points (rpo_CuddleHappinessPoints)')\r\n      ),\r\n      parameters('Pet Initial Happiness Points (rpo_PetInitialHappinessPoints)')\r\n   ),\r\n   parameters('Pet Initial Happiness Points (rpo_PetInitialHappinessPoints)'),\r\n   add(\r\n      body('Get_regarding_Pet')?['rpo_happinesspoints'],\r\n      parameters('Cuddle Happiness Points (rpo_CuddleHappinessPoints)')\r\n   )\r\n)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Mark_Cuddle_as_completed": {
+          "runAfter": {
+            "Update_regarding_Pet": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_cuddles",
+              "recordId": "@triggerBody()?['activityid']",
+              "item/statecode": 1,
+              "item/statuscode": 2,
+              "item/subject": "@{body('Update_regarding_Pet')?['rpo_name']} - Cuddle"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

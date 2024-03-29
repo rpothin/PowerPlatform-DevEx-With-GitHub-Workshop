@@ -1,0 +1,91 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "rpo_sharedcommondataserviceforapps_4171a"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "metadata": {
+            "operationMetadataId": "78336e0a-d879-41be-a8ca-c4edca77f25e"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_active_Pets_with_remaining_life_or_happiness_points": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "909660e6-14f6-470f-961b-f35f03a8ad33"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "$select": "rpo_petid,rpo_lifepoints,rpo_happinesspoints",
+              "$filter": "statecode eq 0 and (rpo_lifepoints gt 0 or rpo_happinesspoints gt 0)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Apply_to_each_Pet": {
+          "foreach": "@outputs('List_active_Pets_with_remaining_life_or_happiness_points')?['body/value']",
+          "actions": {
+            "Decrease_Pet_life_and_happiness_points": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "rpo_pets",
+                  "recordId": "@items('Apply_to_each_Pet')?['rpo_petid']",
+                  "item/rpo_happinesspoints": "@if(\r\n   greater(items('Apply_to_each_Pet')?['rpo_happinesspoints'],0),\r\n   sub(items('Apply_to_each_Pet')?['rpo_happinesspoints'],10),\r\n   0\r\n)",
+                  "item/rpo_lifepoints": "@if(\r\n   greater(items('Apply_to_each_Pet')?['rpo_lifepoints'],0),\r\n   sub(items('Apply_to_each_Pet')?['rpo_lifepoints'],10),\r\n   0\r\n)"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_active_Pets_with_remaining_life_or_happiness_points": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

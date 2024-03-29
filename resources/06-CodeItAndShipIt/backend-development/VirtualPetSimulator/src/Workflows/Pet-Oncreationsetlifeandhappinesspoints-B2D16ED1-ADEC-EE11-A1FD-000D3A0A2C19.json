@@ -1,0 +1,88 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "rpo_sharedcommondataserviceforapps_4171a"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "Pet Initial Life Points (rpo_PetInitialLifePoints)": {
+          "defaultValue": 100000,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "rpo_PetInitialLifePoints"
+          }
+        },
+        "Pet Initial Happiness Points (rpo_PetInitialHappinessPoints)": {
+          "defaultValue": 100000,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "rpo_PetInitialHappinessPoints"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added_in_Pets_table": {
+          "metadata": {
+            "operationMetadataId": "072c04ab-c0f4-4fea-93d2-6b329faa538f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "rpo_pet",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "b2d16ed1-adec-ee11-a1fd-000d3a0a2c19"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Set_life_and_happiness_points_on_the_new_Pet": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "888daede-8530-4956-a4b9-6539f2748638"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "recordId": "@triggerOutputs()?['body/rpo_petid']",
+              "item/rpo_happinesspoints": "@parameters('Pet Initial Happiness Points (rpo_PetInitialHappinessPoints)')",
+              "item/rpo_lifepoints": "@parameters('Pet Initial Life Points (rpo_PetInitialLifePoints)')"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

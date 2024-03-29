@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="rpo_CuddleHappinessPoints">
+  <defaultvalue>1000</defaultvalue>
+  <displayname default="Cuddle Happiness Points">
+    <label description="Cuddle Happiness Points" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000001</type>
+</environmentvariabledefinition>

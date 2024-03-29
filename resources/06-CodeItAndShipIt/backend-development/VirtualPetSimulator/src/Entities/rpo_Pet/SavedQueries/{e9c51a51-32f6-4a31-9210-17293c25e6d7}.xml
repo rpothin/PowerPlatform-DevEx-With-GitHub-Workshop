@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e9c51a51-32f6-4a31-9210-17293c25e6d7}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="rpo_name" select="1" icon="1" preview="1">
+        <row name="result" id="rpo_petid">
+          <cell name="rpo_name" width="300" />
+          <cell name="rpo_lifepoints" width="102" />
+          <cell name="rpo_happinesspoints" width="137" />
+          <cell name="modifiedon" width="113" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="rpo_pet">
+          <attribute name="rpo_petid" />
+          <attribute name="rpo_name" />
+          <attribute name="createdon" />
+          <order attribute="rpo_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="rpo_lifepoints" />
+          <attribute name="rpo_happinesspoints" />
+          <attribute name="modifiedon" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Pets" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

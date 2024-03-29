@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="rpo_PetInitialHappinessPoints">
+  <defaultvalue>100000</defaultvalue>
+  <displayname default="Pet Initial Happiness Points">
+    <label description="Pet Initial Happiness Points" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000001</type>
+</environmentvariabledefinition>

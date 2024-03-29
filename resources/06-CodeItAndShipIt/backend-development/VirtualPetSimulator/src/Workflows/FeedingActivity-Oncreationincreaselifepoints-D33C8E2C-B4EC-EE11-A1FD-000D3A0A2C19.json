@@ -1,0 +1,119 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "rpo_sharedcommondataserviceforapps_4171a"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "Pet Initial Life Points (rpo_PetInitialLifePoints)": {
+          "defaultValue": 100000,
+          "type": "Int",
+          "metadata": {
+            "schemaName": "rpo_PetInitialLifePoints"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added_in_the_Feedings_table": {
+          "metadata": {
+            "operationMetadataId": "b776b214-0be4-4e23-9dfa-2d0acdc56f61"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "rpo_feeding",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "d33c8e2c-b4ec-ee11-a1fd-000d3a0a2c19"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Update_regarding_Pet": {
+          "runAfter": {
+            "Get_regarding_Pet": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "recordId": "@triggerBody()?['_regardingobjectid_value']",
+              "item/rpo_lifepoints": "@if(\r\n   greater(\r\n      add(\r\n         body('Get_regarding_Pet')?['rpo_lifepoints'],\r\n         int(triggerBody()?['_rpo_quantity_label'])\r\n      ),\r\n      parameters('Pet Initial Life Points (rpo_PetInitialLifePoints)')\r\n   ),\r\n   parameters('Pet Initial Life Points (rpo_PetInitialLifePoints)'),\r\n   add(\r\n      body('Get_regarding_Pet')?['rpo_lifepoints'],\r\n      int(triggerBody()?['_rpo_quantity_label'])\r\n   )\r\n)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Get_regarding_Pet": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_pets",
+              "recordId": "@triggerBody()?['_regardingobjectid_value']",
+              "$select": "rpo_lifepoints,rpo_name"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Mark_Feeding_as_completed": {
+          "runAfter": {
+            "Update_regarding_Pet": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "rpo_feedings",
+              "recordId": "@triggerBody()?['activityid']",
+              "item/statecode": 1,
+              "item/statuscode": 2,
+              "item/subject": "@{body('Update_regarding_Pet')?['rpo_name']} - Feeding @{triggerBody()?['rpo_quantity']}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
