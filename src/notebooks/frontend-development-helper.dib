@@ -229,10 +229,7 @@ for (int attempt = 1; attempt <= maxAttempts; attempt++)
 // If maximum of attempts has been reached and the input is still invalid, exit the script with an error message
 if (pcfTemplate != "field" && pcfTemplate != "dataset")
 {
-    if (pcfTemplate != "field" && pcfTemplate != "dataset")
-    {
-        throw new Exception("Invalid input. Maximum attempts reached.");
-    }
+    throw new Exception("Invalid input. Maximum attempts reached.");
 }
 
 #!pwsh
