@@ -1,5 +1,6 @@
 # This is a GitHub Actions workflow for the build and deployment of the "Virtual Pet Simulator" Power Platform solution.
 # This workflow is triggered manually and does not have input parameters.
+# The workflow runs on a Windows runner and uses the "Sandbox" environment.
 #
 # The workflow perform the following steps:
 # 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
@@ -18,6 +19,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: windows-latest
+    environment:
+        name: 'Sandbox'
+
     steps:
       - name: Enable git long paths
         run: git config --global core.longpaths true
