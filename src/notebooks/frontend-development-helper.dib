@@ -94,7 +94,10 @@ if (-not $publisherPrefix -or $publisherPrefix -eq "") {
     exit 1
 }
 
+Write-Host "👍🏼 All required inputs have been provided." -ForegroundColor Green
+
 Write-Host "Move to the src/solutions/ folder..." -ForegroundColor Blue
+
 $solutionsPath = Join-Path $notebookPath "../solutions"
 if (!(Test-Path -Path $solutionsPath)) {
     Write-Host "src/solutions/ folder does not exist. Creating..." -ForegroundColor Blue
@@ -102,7 +105,10 @@ if (!(Test-Path -Path $solutionsPath)) {
 }
 cd $solutionsPath
 
+Write-Host "👍🏼 Moved to the src/solutions/ folder..." -ForegroundColor Green
+
 Write-Host "Check if the Power Platform solution already exists..." -ForegroundColor Blue
+
 if (Test-Path $solutionName) {
     Write-Host "👍🏼 Power Platform solution already exists!" -ForegroundColor Green
     exit 0 # Exit with success
