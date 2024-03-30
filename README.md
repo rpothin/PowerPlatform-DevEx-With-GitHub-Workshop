@@ -45,7 +45,7 @@ This template repository is a support for a workshop that will guide you combini
 3. [Initialization of your workspace](./docs/03-InitializeWorkspace.md) (15 min)
 4. [Organize your work](./docs/04-OrganizeYourWork.md) (15 min)
 5. [But first some ALM setup](./docs/05-SomeALMSetup.md) (30 min)
-6. Code it and ship it! (60 min)
+6. [Code it and ship it!](./docs/06-CodeItAndShipIt.md) (60 min)
 7. Job's not finished! (30 min)
 
 > [!NOTE]
