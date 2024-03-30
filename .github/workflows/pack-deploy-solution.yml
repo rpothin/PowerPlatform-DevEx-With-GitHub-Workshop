@@ -52,7 +52,7 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
           tenant-id: ${{ secrets.TENANT_ID }}
           environment-url: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
-          solution-file: src/solutions/PCFComponents/bin/Debug/PCFComponents.zip
+          solution-file: resources/06-CodeItAndShipIt/backend-development/VirtualPetSimulator/bin/Debug/VirtualPetSimulator.zip
           force-overwrite: true
           publish-changes: true
           skip-dependency-check: false
