@@ -1,5 +1,5 @@
 # This is a GitHub Actions workflow for testing customizations implemented around Dataverse using its API.
-# The workflow is triggered on every push only under the "src/dataverse-api-testing" folder to the main branch.
+# The workflow is triggered on every push only under the "src/Dataverse.API.Testing" folder to the main branch.
 # 
 # The workflow performs the following steps:
 # 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
@@ -13,7 +13,7 @@ name: Dataverse API Testing
 on:
   push:
     paths:
-      - 'src/dataverse-api-testing/**'
+      - 'src/Dataverse.API.Testing/**'
     branches:
       - main
 
@@ -36,10 +36,10 @@ jobs:
             dotnet-version: 6.0.x
     
         - name: Restore Dependencies
-          run: dotnet restore src/dataverse-api-testing
+          run: dotnet restore src/Dataverse.API.Testing
     
         - name: Test
-          run: dotnet test src/dataverse-api-testing --no-build --logger trx --results-directory test-results
+          run: dotnet test src/Dataverse.API.Testing --no-build --logger trx --results-directory test-results
           env:
             DATASERVICE_URL: ${{ secrets.DATAVERSE_ENVIRONMENT_URL }}
             CLIENT_ID: ${{ secrets.CLIENT_ID }}
