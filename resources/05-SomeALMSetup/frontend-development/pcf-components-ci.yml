@@ -1,5 +1,6 @@
 # This is a GitHub Actions workflow for Continuous Integration (CI) of PCF components.
 # The workflow is triggered on every push only under the "src/pcf-components" folder to the main branch.
+# The workflow runs on a Windows runner and uses the "Sandbox" environment.
 # 
 # The workflow performs the following steps:
 # 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
