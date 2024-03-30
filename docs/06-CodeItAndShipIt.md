@@ -11,7 +11,7 @@
 
 ### Upgrade your your GitHub Codespace
 
-In your GitHub Codespaces created in the previous chapter,
+In your GitHub Codespace created in the previous chapter,
 
 1. Press `Ctrl + Shift + P` to open the command palette
 2. Search for the `Codespaces: Add Dev Container Configuration Files...` command and select it
@@ -66,15 +66,15 @@ In your GitHub Codespaces created in the previous chapter,
 
 ### Upgrade your your GitHub Codespace
 
-In your GitHub Codespaces created in the previous chapter,
+In your GitHub Codespace created in the previous chapter,
 
 1. Press `Ctrl + Shift + P` to open the command palette
 2. Search for the `Codespaces: Add Dev Container Configuration Files...` command and select it
 3. Select `Create a new configuration...`
 4. In the warning popup, click on the `Continue` button
 5. Click on `Show All Definitions...`
-6. Search `.Net` and select a proposed option - _you can for example take the `...` in `...`_
-7. Skip the selection of features and click on the `OK` button
+6. Search `.Net` and select a proposed option - _you can for example take the `C# (.NET) (dotnet)` in `8.0-bookworm`_
+7. Search for `Dotnet CLI`, select the corresponding feature and click on the `OK` button, then let you guide and select default options
 8. In the information popup, click on the `Overwrite` button
 9. In the `.devcontainer/devcontainer.json` file, add the `customizations` section just after the `image` property, like shown below:
 
@@ -90,21 +90,47 @@ In your GitHub Codespaces created in the previous chapter,
 				"yzhang.markdown-all-in-one"
 			]
 		}
-	}
+	},
+	"features": ...
 ```
 
 10. Press `Ctrl + Shift + P` to open the command palette
 11. Search for the `Codespaces: Rebuild Container` command and select it
 12. Wait for the dev container to be initialized and opened in your browser
 
+### Power Platform solution to test
+
+#### Import the solution to your environment
+
+1. In your Power Platform environment, create a `Microsoft Dataverse` connection and copy its ID (_from the URL of the connection page_)
+2. In your GitHub Codespace, open the `resources/06-CodeItAndShipIt/backend-development/VirtualPetSimulator/deployment-settings.json` file
+3. Line 40, add the `connectionId` you copied in the previous step
+4. Commit and push your changes to the `main` branch of your repository
+5. Go to the `Actions` page of your repository
+6. In the `All workflows` section, click on the `Build and deploy solution` workflow
+7. Click on the `Run workflow` button
+8. In the popup, click on the `Run workflow` button
+9. Follow the logs of the workflow to ensure it completes successfully
+10. Go to your Power Platform environment to validate that you see a `Virtual Pet Simulator` solution under the `Managed` group
+
+#### Requirements covered by the solution
+
+`Virtual Pet Simulator` is a simple (_really simple_) game where you create a pet and take care of it. The pet has life and happiness points. You can feed it and cuddle it.
+
+Here are the main requirements covered by the solution:
+- As a user, when I create a pet with a name I want to have its life and happiness points asynchronously initialized to 100 000
+- As a user, when I feed my pet by selecting a quantity of food, I want to have its life points increased by the quantity of food selected - but it can not exceed 100 000 (_initial value_)
+- As a user, when I cuddle my pet, I want to have its happiness points increased by 1 000 - but it can not exceed 100 000 (_initial value_)
+
 ### Let's code some tests
 
-Using the [backend-development-helper](../src/notebooks/backend-development-helper.dib) notebook, initialize the codebase for the development of a .Net application to test customizations done around Dataverse.
+1. Using the [backend-development-helper](../src/notebooks/backend-development-helper.dib) notebook, initialize the codebase for the development of a .Net application to test customizations done around Dataverse.
 
-You can find below some ideas of simple tests you could develop during this exercise:
-- ...
+> [!WARNING]
+> The name of the .Net project considered during the configuration of the GitHub workflow for this track was `Dataverse.API.Testing`, so you will need to use this name when prompted by the notebook.
 
-> [!NOTE]
-> For this track, a simple solution with some cloud flows is provided ([...](...)) so you can import it to your Power Platform environment using the `pack-deploy-solution` GitHub workflow available in your repository.
+2. Develop tests for the `Virtual Pet Simulator` solution to ensure that the requirements are met.
+3. Validate your tests from your GitHub Codespace - _[Run tests in .Net](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test)_.
+4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and run the tests considering your Power Platform environment where the solution is deployed_.
 
 [⬅️ Previous chapter](./05-SomeALMSetup.md) | [🏠 Main agenda](./README.md) | [Next chapter ➡️](./07-JobsNotFinished.md)

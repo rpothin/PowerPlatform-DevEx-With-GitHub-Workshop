@@ -103,7 +103,7 @@ In your GitHub Codespaces created in the previous step,
 
 ```yaml
 # This is a GitHub Actions workflow for testing customizations implemented around Dataverse using its API.
-# The workflow is triggered on every push only under the "src/dataverse-api-testing" folder to the main branch.
+# The workflow is triggered on every push only under the "src/Dataverse.API.Testing" folder to the main branch.
 # 
 # The workflow performs the following steps:
 # 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
