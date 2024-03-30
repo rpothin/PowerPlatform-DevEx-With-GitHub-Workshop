@@ -37,7 +37,7 @@
   "ConnectionReferences": [
     {
       "LogicalName": "rpo_sharedcommondataserviceforapps_4171a",
-      "ConnectionId": "",
+      "ConnectionId": "ed1f0fddeb6d4141858b355f6af5afab",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
     }
   ]
