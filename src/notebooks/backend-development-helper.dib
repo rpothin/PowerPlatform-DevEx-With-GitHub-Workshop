@@ -1,0 +1,276 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!markdown
+
+# Backend development helper
+
+This notebook is a helper for backend development.
+
+It will provide you with the key elements to setup your backend development workspace.
+
+> **Note**
+> The Microsoft documentation page used as reference to build this notebook are:
+> - [Create a solution with the dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln#create-a-solution-file)
+> - [Tutorial: Test a .NET class library using Visual Studio Code](https://learn.microsoft.com/en-us/dotnet/core/tutorials/testing-library-with-visual-studio-code?pivots=dotnet-8-0)
+> - [Quickstart: Install and use a package with the dotnet CLI](https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-using-the-dotnet-cli?toc=%2Fdotnet%2Ffundamentals%2Ftoc.json&bc=%2Fdotnet%2Fbreadcrumb%2Ftoc.json)
+
+#!markdown
+
+## 0. Prerequisites
+
+#!pwsh
+
+Write-Host "Get the absolute path of the current notebook parent folder..." -ForegroundColor Blue
+$notebookPath = (Get-Location).Path
+Write-Host "👍🏼 The absolute path of the current notebook parent folder is $notebookPath" -ForegroundColor Green
+
+#!markdown
+
+## 1. Initialize a .Net solution
+
+#!markdown
+
+To initialize a .Net solution, we will use the `dotnet new sln` command as described below:
+
+```bash
+Description: Create an empty solution containing no projects
+
+Usage:
+  dotnet new sln [options] [template options]
+  dotnet new solution [options] [template options]
+
+Options:
+  -n, --name <name>      The name for the output being created. If no name is specified, the name of the output directory is used.
+  -o, --output <output>  Location to place the generated output.
+  --dry-run              Displays a summary of what would happen if the given command line were run if it would result in a template creation.
+  --force                Forces content to be generated even if it would change existing files.
+  --no-update-check      Disables checking for the template package updates when instantiating a template.
+  --project <project>    The project that should be used for context evaluation.
+
+Template options:
+   (No options)
+```
+
+#!pwsh
+
+#!set --name solutionName --value @input:"Please enter a .Net solution name"
+
+#!pwsh
+
+Write-Host "Validate that all required inputs have been provided..." -ForegroundColor Blue
+
+if (-not $solutionName -or $solutionName -eq "") {
+    Write-Host "Please provide a .Net solution name." -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "👍🏼 All required inputs have been provided." -ForegroundColor Green
+
+Write-Host "Move to the src/ folder..." -ForegroundColor Blue
+
+$sourcePath = Join-Path $notebookPath ".."
+if (!(Test-Path -Path $sourcePath)) {
+    Write-Host "src/ folder does not exist. Creating..." -ForegroundColor Blue
+    New-Item -ItemType Directory -Path $sourcePath -Force | Out-Null
+}
+cd $sourcePath
+
+Write-Host "👍🏼 Moved to the src/ folder." -ForegroundColor Green
+
+Write-Host "Check if the .Net solution already exists..." -ForegroundColor Blue
+
+if (Test-Path -Path $solutionName) {
+    Write-Host "👍🏼 .Net solution already exists." -ForegroundColor Green
+    exit 0 # Exit with success
+}
+
+Write-Host "Crate the .Net solution folder..." -ForegroundColor Blue
+mkdir $solutionName
+cd $solutionName
+
+Write-Host "Initialization of the .Net solution..." -ForegroundColor Blue
+
+dotnet new sln -n $solutionName
+
+Write-Host "👍🏼 .Net solution initialized!" -ForegroundColor Green
+
+#!markdown
+
+## 2. Initialize a new .Net project
+
+#!markdown
+
+To initialize a .Net solution, we will use the `dotnet new` command as described below:
+
+```bash
+Description:
+  Template Instantiation Commands for .NET CLI.
+
+Usage:
+  dotnet new [<template-short-name> [<template-args>...]] [options]
+  dotnet new [command] [options]
+
+Arguments:
+  <template-short-name>  A short name of the template to create.
+  <template-args>        Template specific options to use.
+
+Options:
+  -o, --output <output>    Location to place the generated output.
+  -n, --name <name>        The name for the output being created. If no name is specified, the name of the output directory is used.
+  --dry-run                Displays a summary of what would happen if the given command line were run if it would result in a template 
+                           creation.
+  --force                  Forces content to be generated even if it would change existing files.
+  --no-update-check        Disables checking for the template package updates when instantiating a template.
+  --project <project>      The project that should be used for context evaluation.
+  -v, --verbosity <LEVEL>  Sets the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], and diag[nostic]. [default: 
+                           normal]
+  -d, --diagnostics        Enables diagnostic output.
+  -?, -h, --help           Show command line help.
+
+Commands:
+  create <template-short-name> <template-args>  Instantiates a template with given short name. An alias of 'dotnet new <template 
+                                                name>'.
+  install <package>                             Installs a template package.
+  uninstall <package>                           Uninstalls a template package.
+  update                                        Checks the currently installed template packages for update, and install the updates.
+  search <template-name>                        Searches for the templates on NuGet.org.
+  list <template-name>                          Lists templates containing the specified template name. If no name is specified, lists 
+                                                all templates.
+  details <package-identifier>                  Provides the details for specified template package.
+                                                      The command checks if the package is installed locally, if it was not found, it 
+                                                searches the configured NuGet feeds.
+```
+
+> **Note**
+> - You will not be prompted to select a language during the guided creation process below. If you want to create a project in a specific language, you can adjust the configuration of the notebook.
+> - In this notebook, the `Microsoft.PowerPlatform.Dataverse.Client` package will be added to all projects created.
+
+#!pwsh
+
+#!set --name projectTemplateShortName --value @input:"Please enter the considered project template short name"
+
+#!pwsh
+
+#!set --name projectName --value @input:"Please enter a project name"
+
+#!pwsh
+
+Write-Host "Validate that all required inputs have been provided..." -ForegroundColor Blue
+
+if (-not $projectTemplateShortName -or $projectTemplateShortName -eq "") {
+    Write-Host "Please provide a project template short name." -ForegroundColor Red
+    exit 1
+} else {
+    $projectTemplateValidationResults = dotnet new list $projectTemplateShortName
+
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "The provided project template short name is not valid." -ForegroundColor Red
+        exit 1
+    }
+}
+
+if (-not $projectName -or $projectName -eq "") {
+    Write-Host "Please provide a project name." -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "👍🏼 All required inputs have been provided." -ForegroundColor Green
+
+Write-Host "Move to the src/$solutionName/ folder..." -ForegroundColor Blue
+
+$projectPath = Join-Path $notebookPath "../$solutionName"
+if (!(Test-Path -Path $projectPath)) {
+    Write-Host "src/$solutionName/ folder does not exist. You need to initialize a solution first." -ForegroundColor Red
+    exit 1
+}
+
+cd $projectPath
+
+Write-Host "👍🏼 Moved to the src/$solutionName/ folder." -ForegroundColor Green
+
+Write-Host "Check if the project already exists..." -ForegroundColor Blue
+
+if (Test-Path -Path $projectName) {
+    Write-Host "👍🏼 Project already exists." -ForegroundColor Green
+    exit 0 # Exit with success
+}
+
+Write-Host "Initialization of the project..." -ForegroundColor Blue
+dotnet new $projectTemplateShortName -n $projectName
+
+Write-Host "👍🏼 Project initialized!" -ForegroundColor Green
+
+#!markdown
+
+### 2.1. Add `Microsoft.PowerPlatform.Dataverse.Client` package to the new project
+
+#!markdown
+
+To initialize a .Net solution, we will use the `dotnet add` command as described below:
+
+```bash
+Description:
+  .NET Add Command
+
+Usage:
+  dotnet add [<PROJECT>] [command] [options]
+
+Arguments:
+  <PROJECT>  The project file to operate on. If a file is not specified, the command will search the current directory for one. 
+             [default: /workspaces/PowerPlatform-DevEx-With-GitHub-Workshop/]
+
+Options:
+  -?, -h, --help  Show command line help.
+
+
+Commands:
+  package <PACKAGE_NAME>    Add a NuGet package reference to the project.
+  reference <PROJECT_PATH>  Add a project-to-project reference to the project.
+```
+
+#!pwsh
+
+Write-Host "Move to the src/$solutionName/$projectName folder..." -ForegroundColor Blue
+cd $projectPath/$projectName
+
+Write-Host "Add the 'Microsoft.PowerPlatform.Dataverse.Client' package to the project..." -ForegroundColor Blue
+dotnet add package Microsoft.PowerPlatform.Dataverse.Client
+
+Write-Host "👍🏼 Package added to the project!" -ForegroundColor Green
+
+#!markdown
+
+## 3. Add the new project to the solution
+
+#!markdown
+
+To initialize a .Net solution, we will use the `dotnet sln add` command as described below:
+
+```bash
+Description:
+  Add one or more projects to a solution file.
+
+Usage:
+  dotnet sln <SLN_FILE> add [<PROJECT_PATH>...] [options]
+
+Arguments:
+  <SLN_FILE>      The solution file to operate on. If not specified, the command will search the current directory for one. [default: 
+                  /workspaces/PowerPlatform-DevEx-With-GitHub-Workshop/]
+  <PROJECT_PATH>  The paths to the projects to add to the solution.
+
+Options:
+  --in-root                                Place project in root of the solution, rather than creating a solution folder.
+  -s, --solution-folder <solution-folder>  The destination solution folder path to add the projects to.
+  -?, -h, --help                           Show command line help.
+```
+
+#!pwsh
+
+Write-Host "Move to the src/$solutionName/ folder..." -ForegroundColor Blue
+$solutionPath = Join-Path $notebookPath "../$solutionName"
+cd $solutionPath
+
+Write-Host "Add the project to the solution..." -ForegroundColor Blue
+dotnet sln add $projectName/$projectName.csproj
