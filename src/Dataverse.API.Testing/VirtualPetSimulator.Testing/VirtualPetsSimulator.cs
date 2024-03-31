@@ -68,7 +68,7 @@ namespace Dataverse.API.Testing
 
             string randomPetName = petNames[index];
 
-            Entity pet = new Entity("rpo_pets");
+            Entity pet = new Entity("rpo_pet");
             pet["rpo_name"] = randomPetName;
 
             // Act
@@ -81,7 +81,7 @@ namespace Dataverse.API.Testing
             System.Threading.Thread.Sleep(15000);
 
             // Retrieve the created pet
-            var createdPet = _serviceClient.Retrieve("rpo_pets", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+            var createdPet = _serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
 
             // Validate the lifepoints and happinesspoints of the pet
             var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
