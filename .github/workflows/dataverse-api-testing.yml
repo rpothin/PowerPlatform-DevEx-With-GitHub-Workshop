@@ -38,7 +38,7 @@ jobs:
         - name: Restore dependencies
           run: dotnet restore src/Dataverse.API.Testing/Dataverse.API.Testing.sln
 
-        - name: Run tests
+        - name: Build Solution & Run tests
           run: dotnet test src/Dataverse.API.Testing/Dataverse.API.Testing.sln --logger "trx;LogFileName=test-results.trx"
           env:
             DATASERVICE_URL: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
