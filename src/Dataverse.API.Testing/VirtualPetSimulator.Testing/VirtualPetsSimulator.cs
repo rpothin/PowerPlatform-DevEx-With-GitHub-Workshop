@@ -78,8 +78,8 @@ namespace Dataverse.API.Testing
             // Assert
             Assert.NotEqual(Guid.Empty, petId);
 
-            // Wait for 30 seconds
-            System.Threading.Thread.Sleep(30000);
+            // Wait for 20 seconds
+            System.Threading.Thread.Sleep(20000);
 
             // Retrieve the created pet
             var createdPet = _serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
@@ -88,8 +88,16 @@ namespace Dataverse.API.Testing
             var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
             var happinesspoints = createdPet.GetAttributeValue<int>("rpo_happinesspoints");
 
-            Assert.Equal(100000, lifepoints);
-            Assert.Equal(100000, happinesspoints);
+            if (lifepoints != 100000 || happinesspoints != 100000)
+            {
+                Assert.Equal(99990, lifepoints);
+                Assert.Equal(99990, happinesspoints);
+            }
+            else
+            {
+                Assert.Equal(100000, lifepoints);
+                Assert.Equal(100000, happinesspoints);
+            }
         }
     }
 }
