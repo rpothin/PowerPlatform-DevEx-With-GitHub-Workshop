@@ -75,7 +75,7 @@ namespace Dataverse.API.Testing
             var petId = _serviceClient.Create(pet);
 
             // Assert
-            Assert.NotNull(petId);
+            Assert.NotEqual(Guid.Empty, petId);
 
             // Wait for 15 seconds
             System.Threading.Thread.Sleep(15000);
