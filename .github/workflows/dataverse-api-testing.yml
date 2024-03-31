@@ -36,13 +36,13 @@ jobs:
           with:
             dotnet-version: '8.0.x'
     
-        - name: Restore Dependencies
+        - name: Restore dependencies
           run: dotnet restore src/Dataverse.API.Testing/Dataverse.API.Testing.sln
 
         - name: Build solution
           run: dotnet build src/Dataverse.API.Testing/Dataverse.API.Testing.sln
 
-        - name: Test
+        - name: Run tests
           run: dotnet test src/Dataverse.API.Testing/Dataverse.API.Testing.sln --no-build --logger trx --results-directory test-results
           env:
             DATASERVICE_URL: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
