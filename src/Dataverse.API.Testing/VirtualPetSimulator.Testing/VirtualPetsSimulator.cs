@@ -88,6 +88,8 @@ namespace Dataverse.API.Testing
             var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
             var happinesspoints = createdPet.GetAttributeValue<int>("rpo_happinesspoints");
 
+            // Check if the lifepoints and happinesspoints are not equal to 100000
+            // If not, check if the lifepoints and happinesspoints are equal to 99990
             if (lifepoints != 100000 || happinesspoints != 100000)
             {
                 Assert.Equal(99990, lifepoints);
