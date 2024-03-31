@@ -50,6 +50,6 @@ namespace Dataverse.API.Testing
             Assert.True(_serviceClient.IsReady);
         }
 
-        // Add more tests here soon...
+        // Add more tests here...
     }
 }
