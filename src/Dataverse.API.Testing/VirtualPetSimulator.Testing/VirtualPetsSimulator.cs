@@ -4,10 +4,16 @@ using System;
 
 namespace Dataverse.API.Testing
 {
+    /// <summary>
+    /// Represents a class containing tests for the Dataverse API.
+    /// </summary>
     public class DataverseAPITests
     {
         private ServiceClient _serviceClient;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
+        /// </summary>
         public DataverseAPITests()
         {
             // Get environment variables
@@ -34,6 +40,9 @@ namespace Dataverse.API.Testing
             }
         }
 
+        /// <summary>
+        /// Tests the connection to the Dataverse API.
+        /// </summary>
         [Fact]
         public void TestConnection()
         {
