@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VirtualPetSimulator.Testing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acb14f04b389f3b0191ab8d64ab25c608aa91ccd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+646670c095cf5848c9ac6dd700c874c5d7f5bc78")]
 [assembly: System.Reflection.AssemblyProductAttribute("VirtualPetSimulator.Testing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VirtualPetSimulator.Testing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
