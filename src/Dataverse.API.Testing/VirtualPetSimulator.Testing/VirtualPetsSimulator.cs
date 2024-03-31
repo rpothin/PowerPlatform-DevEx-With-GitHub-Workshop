@@ -78,8 +78,8 @@ namespace Dataverse.API.Testing
             // Assert
             Assert.NotEqual(Guid.Empty, petId);
 
-            // Wait for 15 seconds
-            System.Threading.Thread.Sleep(15000);
+            // Wait for 30 seconds
+            System.Threading.Thread.Sleep(30000);
 
             // Retrieve the created pet
             var createdPet = _serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
