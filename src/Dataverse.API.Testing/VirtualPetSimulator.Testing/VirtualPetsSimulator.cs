@@ -50,32 +50,45 @@ namespace Dataverse.API.Testing
             // Check if the connection is ready
             Assert.True(_serviceClient.IsReady);
         }
-
-        // Create an account by passing a name and a phone number
-        // And validate that the owner is automatically set to the current user
+        
+        /// <summary>
+        /// Tests the creation of a pet entity.
+        /// </summary>
+        /// <remarks>
+        /// The test creates a pet entity with a random name and validates the lifepoints and happinesspoints of the pet.
+        /// </remarks>
         [Fact]
-        public void CreateAccount()
+        public void CreatePet()
         {
-            // Create an account entity with the following attributes
-            var accountName = "Contoso";
-            var phoneNumber = "123-456-7890";
+            // Create a pet entity with the following attributes
+            List<string> petNames = new List<string> { "Fluffy", "Sparky", "Rover", "Bella", "Max", "Lucy", "Charlie", "Molly", "Buddy", "Daisy" };
 
-            Entity account = new Entity("account");
-            account["name"] = accountName;
-            account["telephone1"] = phoneNumber;
+            Random random = new Random();
+            int index = random.Next(petNames.Count);
+
+            string randomPetName = petNames[index];
+
+            Entity pet = new Entity("rpo_pets");
+            pet["rpo_name"] = randomPetName;
 
             // Act
-            var accountId = _serviceClient.Create(account);
+            var petId = _serviceClient.Create(pet);
 
             // Assert
-            Assert.NotNull(accountId);
+            Assert.NotNull(petId);
 
-            // Retrieve the created account
-            var createdAccount = _serviceClient.Retrieve("account", accountId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+            // Wait for 15 seconds
+            System.Threading.Thread.Sleep(15000);
 
-            // Validate the owner of the account
-            var owner = createdAccount.GetAttributeValue<EntityReference>("ownerid");
-            Assert.NotNull(owner);
+            // Retrieve the created pet
+            var createdPet = _serviceClient.Retrieve("rpo_pets", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+
+            // Validate the lifepoints and happinesspoints of the pet
+            var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
+            var happinesspoints = createdPet.GetAttributeValue<int>("rpo_happinesspoints");
+
+            Assert.Equal(100000, lifepoints);
+            Assert.Equal(100000, happinesspoints);
         }
     }
 }
