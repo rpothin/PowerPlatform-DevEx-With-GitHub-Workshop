@@ -1,5 +1,6 @@
 # This is a GitHub Actions workflow for testing customizations implemented around Dataverse using its API.
 # The workflow is triggered on every push only under the "src/Dataverse.API.Testing" folder to the main branch.
+# This workflow need to define the following permissions to be able to publish the test results: permissions: contents: read, actions: read and checks: write
 # 
 # The workflow performs the following steps:
 # 0. Enable git long paths: It enables long paths in git to avoid the "Filename too long" error.
@@ -16,6 +17,11 @@ on:
       - 'src/Dataverse.API.Testing/**'
     branches:
       - main
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
 
 jobs:
     build-and-test:
