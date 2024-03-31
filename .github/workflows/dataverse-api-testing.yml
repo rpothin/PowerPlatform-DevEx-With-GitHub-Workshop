@@ -49,5 +49,5 @@ jobs:
           uses: dorny/test-reporter@main
           with:
             name: Dataverse API Testing
-            path: test-results/**/*.trx
+            path: **/*.trx
             reporter: dotnet-trx
