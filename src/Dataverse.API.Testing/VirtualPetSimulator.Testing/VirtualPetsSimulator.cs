@@ -1,6 +1,7 @@
 using Xunit;
 using Microsoft.PowerPlatform.Dataverse.Client;
 using System;
+using Microsoft.Xrm.Sdk;
 
 namespace Dataverse.API.Testing
 {
@@ -50,6 +51,31 @@ namespace Dataverse.API.Testing
             Assert.True(_serviceClient.IsReady);
         }
 
-        // Add more tests here soon...
+        // Create an account by passing a name and a phone number
+        // And validate that the owner is automatically set to the current user
+        [Fact]
+        public void CreateAccount()
+        {
+            // Create an account entity with the following attributes
+            var accountName = "Contoso";
+            var phoneNumber = "123-456-7890";
+
+            Entity account = new Entity("account");
+            account["name"] = accountName;
+            account["telephone1"] = phoneNumber;
+
+            // Act
+            var accountId = _serviceClient.Create(account);
+
+            // Assert
+            Assert.NotNull(accountId);
+
+            // Retrieve the created account
+            var createdAccount = _serviceClient.Retrieve("account", accountId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+
+            // Validate the owner of the account
+            var owner = createdAccount.GetAttributeValue<EntityReference>("ownerid");
+            Assert.NotNull(owner);
+        }
     }
 }
