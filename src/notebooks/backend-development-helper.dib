@@ -274,3 +274,28 @@ cd $solutionPath
 
 Write-Host "Add the project to the solution..." -ForegroundColor Blue
 dotnet sln add $projectName/$projectName.csproj
+
+#!markdown
+
+## 4. Initialize a .gitignore file for the solution
+
+#!pwsh
+
+# If it does not yet exist, create a .gitignore file in the src/$solutionName folder
+# with the following ignored files and folders:
+# - .bin/
+# - .obj/Debug/
+
+Write-Host "Create the .gitignore file..." -ForegroundColor Blue
+
+$gitignorePath = Join-Path $notebookPath "../$solutionName/.gitignore"
+
+if (!(Test-Path -Path $gitignorePath)) {
+    @"
+# Ignore .bin/ and .obj/Debug/ folders
+**/bin/
+**/obj/Debug/
+"@ | Out-File $gitignorePath -Encoding utf8
+}
+
+Write-Host "👍🏼 .gitignore file created!" -ForegroundColor Green

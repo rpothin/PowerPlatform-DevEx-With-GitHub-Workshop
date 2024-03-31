@@ -1,0 +1,3 @@
+# Ignore .bin/ and .obj/Debug/ folders
+**/bin/
+**/obj/Debug/
