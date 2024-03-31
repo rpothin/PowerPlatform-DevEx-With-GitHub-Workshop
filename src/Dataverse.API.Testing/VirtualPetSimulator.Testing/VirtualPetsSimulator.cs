@@ -15,6 +15,9 @@ namespace Dataverse.API.Testing
         /// <summary>
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
         /// </summary>
+        /// <remarks>
+        /// The constructor initializes the service client using the environment variables.
+        /// </remarks>
         public DataverseAPITests()
         {
             // Get environment variables
