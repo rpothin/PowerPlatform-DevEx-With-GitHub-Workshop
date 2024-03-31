@@ -127,10 +127,9 @@ Here are the main requirements covered by the solution:
 1. Using the [backend-development-helper](../src/notebooks/backend-development-helper.dib) notebook, initialize the codebase for the development of a .Net application to test customizations done around Dataverse.
 
 > [!WARNING]
-> The name of the .Net project considered during the configuration of the GitHub workflow for this track was `Dataverse.API.Testing`, so you will need to use this name when prompted by the notebook.
+> The name of the .Net solution considered during the configuration of the GitHub workflow for this track was `Dataverse.API.Testing`, so you will need to use this name when prompted by the notebook.
 
-2. Develop tests for the `Virtual Pet Simulator` solution to ensure that the requirements are met.
-3. Validate your tests from your GitHub Codespace - _[Run tests in .Net](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test)_.
-4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and run the tests considering your Power Platform environment where the solution is deployed_.
+2. Develop tests for the `Virtual Pet Simulator` solution to ensure that the documented requirements are met.
+3. Commit and push your changes to the `main` branch of your repository to validate your tests - _this will trigger the GitHub workflow you created in the previous step to build and run the tests considering your Power Platform environment where the solution is deployed_.
 
 [⬅️ Previous chapter](./05-SomeALMSetup.md) | [🏠 Main agenda](./README.md) | [Next chapter ➡️](./07-JobsNotFinished.md)
