@@ -15,11 +15,23 @@ namespace Dataverse.API.Testing
             var clientId = Environment.GetEnvironmentVariable("CLIENT_ID");
             var clientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
 
+            if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(clientSecret))
+            {
+                throw new InvalidOperationException("Required environment variables are not set.");
+            }
+
             // Create connection string
             var connectionString = $"AuthType=ClientSecret;Url={url};ClientId={clientId};ClientSecret={clientSecret}";
 
-            // Initialize service client
-            _serviceClient = new ServiceClient(connectionString);
+            try
+            {
+                // Initialize service client
+                _serviceClient = new ServiceClient(connectionString);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Failed to initialize ServiceClient.", ex);
+            }
         }
 
         [Fact]
