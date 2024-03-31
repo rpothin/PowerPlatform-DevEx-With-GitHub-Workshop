@@ -16,7 +16,8 @@
 		}
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/dotnet:2": {}
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

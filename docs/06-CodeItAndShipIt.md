@@ -19,7 +19,7 @@ In your GitHub Codespace created in the previous chapter,
 4. In the warning popup, click on the `Continue` button
 5. Click on `Show All Definitions...`
 6. Search `Node.js` and select a proposed option - _you can for example take the `Node.js & TypeScript (typescript-node)` in `20-bullseye`_
-7. Search for `Dotnet CLI`, select the corresponding feature and click on the `OK` button
+7. Search for `Dotnet CLI` and `GitHub CLI`, select the corresponding feature and click on the `OK` button
 8. In the information popup, click on the `Overwrite` button
 9. In the `.devcontainer/devcontainer.json` file, add the `customizations` section just after the `image` property, like shown below:
 
@@ -74,7 +74,7 @@ In your GitHub Codespace created in the previous chapter,
 4. In the warning popup, click on the `Continue` button
 5. Click on `Show All Definitions...`
 6. Search `.Net` and select a proposed option - _you can for example take the `C# (.NET) (dotnet)` in `8.0-bookworm`_
-7. Search for `Dotnet CLI`, select the corresponding feature and click on the `OK` button, then let you guide and select default options
+7. Search for `Dotnet CLI` and `GitHub CLI`, select the corresponding feature and click on the `OK` button, then let you guide and select default options
 8. In the information popup, click on the `Overwrite` button
 9. In the `.devcontainer/devcontainer.json` file, add the `customizations` section just after the `image` property, like shown below:
 
