@@ -44,10 +44,3 @@ jobs:
             DATASERVICE_URL: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
             CLIENT_ID: ${{ secrets.CLIENT_ID }}
             CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-    
-        - name: Publish Test Results
-          uses: dorny/test-reporter@main
-          with:
-            name: Dataverse API Testing
-            path: **/*.trx
-            reporter: dotnet-trx
