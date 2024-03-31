@@ -1,6 +1,4 @@
-using Xunit;
 using Microsoft.PowerPlatform.Dataverse.Client;
-using System;
 using Microsoft.Xrm.Sdk;
 
 namespace Dataverse.API.Testing
