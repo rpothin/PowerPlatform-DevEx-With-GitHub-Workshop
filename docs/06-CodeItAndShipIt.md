@@ -119,6 +119,7 @@ In your GitHub Codespace created in the previous chapter,
 
 Here are the main requirements covered by the solution:
 - As a user, when I create a pet with a name I want to have its life and happiness points asynchronously initialized to 100 000
+- Every minute, the life and happiness points of every pet decrease by 10
 - As a user, when I feed my pet by selecting a quantity of food, I want to have its life points increased by the quantity of food selected - but it can not exceed 100 000 (_initial value_)
 - As a user, when I cuddle my pet, I want to have its happiness points increased by 1 000 - but it can not exceed 100 000 (_initial value_)
 
