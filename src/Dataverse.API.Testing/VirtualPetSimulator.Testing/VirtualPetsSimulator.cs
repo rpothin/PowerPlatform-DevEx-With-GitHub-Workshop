@@ -260,7 +260,7 @@ namespace Dataverse.API.Testing
             // Create a feeding activity for a pet with a quantity of food less than 98 000
             Entity feedingActivity = new Entity("rpo_feeding");
             feedingActivity["rpo_quantity"] = new OptionSetValue(selectedFoodOption.Key);
-            feedingActivity["rpo_pet"] = new EntityReference("rpo_pet", pet.Id);
+            feedingActivity["regardingobjectid"] = new EntityReference("rpo_pet", pet.Id);
 
             // Act
             var feedingActivityId = _serviceClient.Create(feedingActivity);
