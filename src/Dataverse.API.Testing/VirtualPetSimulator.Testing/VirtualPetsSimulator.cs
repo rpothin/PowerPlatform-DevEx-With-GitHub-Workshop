@@ -1,5 +1,6 @@
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Dataverse.API.Testing
 {
@@ -151,6 +152,49 @@ namespace Dataverse.API.Testing
             {
                 Assert.Equal(100000, lifepoints);
                 Assert.Equal(100000, happinesspoints);
+            }
+        }
+
+        // List all the pets with their lifepoints and happinesspoints greater than 100
+        // Wait for 3 minutes (180000 milliseconds)
+        // Validate the lifepoints and happinesspoints of the pets in the list have decreased by at least 20 points
+        [Fact]
+        public void DecreasePointsOverTime()
+        {
+            // Retrieve all the pets with lifepoints and happinesspoints greater than 100
+            var query = new QueryExpression("rpo_pet")
+            {
+                ColumnSet = new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"),
+                Criteria = new FilterExpression
+                {
+                    Conditions =
+                    {
+                        new ConditionExpression("rpo_lifepoints", ConditionOperator.GreaterThan, 100),
+                        new ConditionExpression("rpo_happinesspoints", ConditionOperator.GreaterThan, 100)
+                    }
+                }
+            };
+
+            var pets = _serviceClient.RetrieveMultiple(query).Entities;
+
+            // Wait for 3 minutes
+            System.Threading.Thread.Sleep(180000);
+
+            // Validate the lifepoints and happinesspoints of the pets
+            foreach (var pet in pets)
+            {
+                // Get the current pet
+                var updatedPet = _serviceClient.Retrieve("rpo_pet", pet.Id, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
+
+                var lifepoints = pet.GetAttributeValue<int>("rpo_lifepoints");
+                var happinesspoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
+
+                var updatedLifepoints = updatedPet.GetAttributeValue<int>("rpo_lifepoints");
+                var updatedHappinesspoints = updatedPet.GetAttributeValue<int>("rpo_happinesspoints");
+
+                // Check if the lifepoints and happinesspoints have decreased by at least 20 points
+                Assert.True(lifepoints - updatedLifepoints >= 20);
+                Assert.True(happinesspoints - updatedHappinesspoints >= 20);
             }
         }
     }
