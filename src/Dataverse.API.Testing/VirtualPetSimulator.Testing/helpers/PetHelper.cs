@@ -63,6 +63,18 @@ namespace VirtualPetsSimulator.Helpers
 
             // Assert that the life points and the happiness points are set to their initial values
             // If it is not the case, assert that the life points and the happiness points are set to their initial values minus 10
+            Console.WriteLine(lifePoints);
+            Console.WriteLine(happinessPoints);
+
+            Console.WriteLine(_initialLifePoints);
+            Console.WriteLine(_initialHappinessPoints);
+
+            Console.WriteLine(lifePoints == _initialLifePoints);
+            Console.WriteLine(happinessPoints == _initialHappinessPoints);
+
+            Console.WriteLine(lifePoints == _initialLifePoints - 10);
+            Console.WriteLine(happinessPoints == _initialHappinessPoints - 10);
+
             return (lifePoints == _initialLifePoints && happinessPoints == _initialHappinessPoints) || (lifePoints == _initialLifePoints - 10 && happinessPoints == _initialHappinessPoints - 10);
         }
 
