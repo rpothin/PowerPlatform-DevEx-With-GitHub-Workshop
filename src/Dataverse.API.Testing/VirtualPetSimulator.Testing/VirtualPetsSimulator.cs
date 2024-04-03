@@ -72,6 +72,9 @@ namespace Dataverse.API.Testing
 
             // Assert that the life points and the happiness points are set to 100000 or 99990
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
+
+            // Delete the pet
+            PetHelper.DeletePet(_serviceClient, petId);
         }
 
         /// <summary>
@@ -213,8 +216,8 @@ namespace Dataverse.API.Testing
             // Dispose managed resources.
             if (_petId != Guid.Empty)
             {
-                PetHelper.DeletePet(_serviceClient, _petId);
-                _petId = Guid.Empty;
+                //PetHelper.DeletePet(_serviceClient, _petId);
+                //_petId = Guid.Empty;
             }
 
             if(_serviceClient != null)
