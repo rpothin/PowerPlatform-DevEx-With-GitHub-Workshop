@@ -12,7 +12,6 @@ namespace Dataverse.API.Testing
     {
         private ServiceClient _serviceClient;
         private Guid _petId;
-        private bool _disposed = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
@@ -90,10 +89,10 @@ namespace Dataverse.API.Testing
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
 
             // Delete the pet
-            //PetHelper.DeletePet(_serviceClient, petId);
+            PetHelper.DeletePet(_serviceClient, petId);
         }
 
-/*
+
         /// <summary>
         /// Tests the decrease of pet points over time.
         /// </summary>
@@ -190,63 +189,9 @@ namespace Dataverse.API.Testing
 
             // Assert
             Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
-        }
-    */
 
-        /// <summary>
-        /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
-        /// </summary>
-        /// <remarks>
-        /// The method calls the <see cref="Dispose(bool)"/> method.
-        /// </remarks>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
-        /// </summary>
-        /// <param name="disposing">A value indicating whether the method is called from the <see cref="Dispose()"/> method.</param>
-        /// <remarks>
-        /// The method disposes the managed resources and optionally the unmanaged resources.
-        /// </remarks>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    // Dispose managed resources.
-                    if (_petId != Guid.Empty)
-                    {
-                        PetHelper.DeletePet(_serviceClient, _petId);
-                        _petId = Guid.Empty;
-                    }
-
-                    if(_serviceClient != null)
-                    {
-                        _serviceClient.Dispose();
-                        _serviceClient = null;
-                    }
-                }
-
-                // Dispose unmanaged resources.
-
-                _disposed = true;
-            }
-        }
-
-        /// <summary>
-        /// Finalizes an instance of the <see cref="DataverseAPITests"/> class.
-        /// </summary>
-        /// <remarks>
-        /// The finalizer calls the <see cref="Dispose(bool)"/> method.
-        /// </remarks>
-        ~DataverseAPITests()
-        {
-            Dispose(false);
+            // Delete the pet
+            PetHelper.DeletePet(_serviceClient, _petId);
         }
     }
 }
