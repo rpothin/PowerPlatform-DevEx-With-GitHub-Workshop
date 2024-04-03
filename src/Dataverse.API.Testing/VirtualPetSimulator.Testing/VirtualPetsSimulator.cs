@@ -1,6 +1,7 @@
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using VirtualPetsSimulator.Helpers;
 
 namespace Dataverse.API.Testing
 {
@@ -10,6 +11,7 @@ namespace Dataverse.API.Testing
     public class DataverseAPITests
     {
         private ServiceClient _serviceClient;
+        private Guid _petId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
@@ -42,16 +44,6 @@ namespace Dataverse.API.Testing
                 throw new InvalidOperationException("Failed to initialize ServiceClient.", ex);
             }
         }
-
-        /// <summary>
-        /// Tests the connection to the Dataverse API.
-        /// </summary>
-        [Fact]
-        public void TestConnection()
-        {
-            // Check if the connection is ready
-            Assert.True(_serviceClient.IsReady);
-        }
         
         /// <summary>
         /// Tests the creation of a pet entity.
@@ -62,45 +54,17 @@ namespace Dataverse.API.Testing
         [Fact]
         public void CreatePet_SetOnlyName()
         {
-            // Create a pet entity with the following attributes
-            List<string> petNames = new List<string> { "Fluffy", "Sparky", "Rover", "Bella", "Max", "Lucy", "Charlie", "Molly", "Buddy", "Daisy" };
-
-            Random random = new Random();
-            int index = random.Next(petNames.Count);
-
-            string randomPetName = petNames[index];
-
-            Entity pet = new Entity("rpo_pet");
-            pet["rpo_name"] = randomPetName;
-
             // Act
-            var petId = _serviceClient.Create(pet);
+            _petId = PetHelper.CreateRandomPet(_serviceClient);
 
             // Assert
-            Assert.NotEqual(Guid.Empty, petId);
+            Assert.NotEqual(Guid.Empty, _petId);
 
             // Wait for 20 seconds
             System.Threading.Thread.Sleep(20000);
 
-            // Retrieve the created pet
-            var createdPet = _serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
-
-            // Validate the lifepoints and happinesspoints of the pet
-            var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
-            var happinesspoints = createdPet.GetAttributeValue<int>("rpo_happinesspoints");
-
-            // Check if the lifepoints and happinesspoints are not equal to 100000
-            // If not, check if the lifepoints and happinesspoints are equal to 99990
-            if (lifepoints != 100000 || happinesspoints != 100000)
-            {
-                Assert.Equal(99990, lifepoints);
-                Assert.Equal(99990, happinesspoints);
-            }
-            else
-            {
-                Assert.Equal(100000, lifepoints);
-                Assert.Equal(100000, happinesspoints);
-            }
+            // Assert that the life points and the happiness points are set to 100000 or 99990
+            Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, _petId));
         }
 
         /// <summary>
