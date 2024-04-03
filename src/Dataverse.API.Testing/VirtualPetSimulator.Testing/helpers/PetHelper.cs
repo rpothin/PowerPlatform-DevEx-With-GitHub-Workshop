@@ -15,8 +15,8 @@ namespace VirtualPetsSimulator.Helpers
         /// </remarks>
         public static Guid CreateRandomPet(ServiceClient serviceClient)
         {
-            var pet = new Entity("pet");
-            pet["name"] = "Pet" + Guid.NewGuid().ToString();
+            var pet = new Entity("rpo_pet");
+            pet["rpo_name"] = "Pet" + Guid.NewGuid().ToString();
             return serviceClient.Create(pet);
         }
 
@@ -32,11 +32,11 @@ namespace VirtualPetsSimulator.Helpers
         public static bool ArePetLifeAndHappinessPointsCorrectlyInitialized(ServiceClient serviceClient, Guid petId)
         {
             // Retrieve the created pet
-            var pet = serviceClient.Retrieve("pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet("life_points", "happiness_points"));
+            var pet = serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
             // Get the life points and the happiness points
-            var lifePoints = pet.GetAttributeValue<int>("life_points");
-            var happinessPoints = pet.GetAttributeValue<int>("happiness_points");
+            var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
+            var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
             // Assert that the life points and the happiness points are set to 100000
             // If it is not the case, assert that the life points and the happiness points are set to 99990
