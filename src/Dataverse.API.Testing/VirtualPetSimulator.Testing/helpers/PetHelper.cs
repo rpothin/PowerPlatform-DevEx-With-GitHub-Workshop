@@ -97,18 +97,18 @@ namespace VirtualPetsSimulator.Helpers
         {
             var foodOptions = new Dictionary<int, int>
             {
-                { 913610000, 10 },
-                { 913610001, 50 },
-                { 913610002, 100 },
-                { 913610003, 1000 }
+                { 10, 913610000 },
+                { 50, 913610001 },
+                { 100, 913610002 },
+                { 1000, 913610003 }
             };
 
             // Get the code corresponding to the requested food quantity
-            var selectedFoodOption = foodOptions.ElementAt(foodQuantity);
+            var selectedFoodOption = foodOptions[foodQuantity];
 
             // Create the feeding activity
             Entity feedingActivity = new Entity("rpo_feeding");
-            feedingActivity["rpo_quantity"] = new OptionSetValue(selectedFoodOption.Key);
+            feedingActivity["rpo_quantity"] = new OptionSetValue(selectedFoodOption);
             feedingActivity["regardingobjectid"] = new EntityReference("rpo_pet", petId);
 
             return serviceClient.Create(feedingActivity);
