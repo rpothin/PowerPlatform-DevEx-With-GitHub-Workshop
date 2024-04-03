@@ -98,7 +98,7 @@ namespace Dataverse.API.Testing
             // Delete the pet
             PetHelper.DeletePet(_serviceClient, petId);
         }
-/*
+
         /// <summary>
         /// Tests the decrease of pet points over time.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Dataverse.API.Testing
             // Assert
             Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
         }
-*/
+
         /// <summary>
         /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
         /// </summary>
