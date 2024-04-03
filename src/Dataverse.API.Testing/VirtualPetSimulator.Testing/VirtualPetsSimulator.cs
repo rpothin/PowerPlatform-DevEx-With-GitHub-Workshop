@@ -90,7 +90,7 @@ namespace Dataverse.API.Testing
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
 
             // Delete the pet
-            PetHelper.DeletePet(_serviceClient, petId);
+            //PetHelper.DeletePet(_serviceClient, petId);
         }
 
 /*
@@ -205,6 +205,13 @@ namespace Dataverse.API.Testing
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
+        /// </summary>
+        /// <param name="disposing">A value indicating whether the method is called from the <see cref="Dispose()"/> method.</param>
+        /// <remarks>
+        /// The method disposes the managed resources and optionally the unmanaged resources.
+        /// </remarks>
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
