@@ -63,18 +63,6 @@ namespace VirtualPetsSimulator.Helpers
 
             // Assert that the life points and the happiness points are set to their initial values
             // If it is not the case, assert that the life points and the happiness points are set to their initial values minus 10
-            Console.WriteLine(lifePoints);
-            Console.WriteLine(happinessPoints);
-
-            Console.WriteLine(_initialLifePoints);
-            Console.WriteLine(_initialHappinessPoints);
-
-            Console.WriteLine(lifePoints == _initialLifePoints);
-            Console.WriteLine(happinessPoints == _initialHappinessPoints);
-
-            Console.WriteLine(lifePoints == _initialLifePoints - 10);
-            Console.WriteLine(happinessPoints == _initialHappinessPoints - 10);
-
             return (lifePoints == _initialLifePoints && happinessPoints == _initialHappinessPoints) || (lifePoints == _initialLifePoints - 10 && happinessPoints == _initialHappinessPoints - 10);
         }
 
@@ -126,6 +114,17 @@ namespace VirtualPetsSimulator.Helpers
             return serviceClient.Create(feedingActivity);
         }
 
+        /// <summary>
+        /// Check if the life points are correctly updated after a feeding activity
+        /// </summary>
+        /// <param name="serviceClient">The service client</param>
+        /// <param name="petId">The id of the pet</param>
+        /// <param name="lifePointsBeforeFeeding">The life points of the pet before the feeding activity</param>
+        /// <param name="foodQuantity">The quantity of food</param>
+        /// <returns>True if the life points are correctly updated, false otherwise</returns>
+        /// <remarks>
+        /// This method checks if the life points of the pet are correctly updated after a feeding activity
+        /// </remarks>
         public static bool ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(ServiceClient serviceClient, Guid petId, int lifePointsBeforeFeeding, int foodQuantity)
         {
             // Retrieve the pet
@@ -141,6 +140,19 @@ namespace VirtualPetsSimulator.Helpers
                 // Consider the option that the life points already decreased by 10
                 return lifePoints == lifePointsBeforeFeeding + foodQuantity || lifePoints == lifePointsBeforeFeeding + foodQuantity - 10;
             }
+        }
+
+        /// <summary>
+        /// Delete a pet
+        /// </summary>
+        /// <param name="serviceClient">The service client</param>
+        /// <param name="petId">The id of the pet</param>
+        /// <remarks>
+        /// This method deletes a pet
+        /// </remarks>
+        public static void DeletePet(ServiceClient serviceClient, Guid petId)
+        {
+            serviceClient.Delete("rpo_pet", petId);
         }
     }
 }
