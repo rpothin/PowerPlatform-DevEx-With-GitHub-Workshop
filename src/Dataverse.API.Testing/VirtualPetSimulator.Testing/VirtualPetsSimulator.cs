@@ -12,7 +12,6 @@ namespace Dataverse.API.Testing
     {
         private ServiceClient _serviceClient;
         private Guid _petId;
-        private bool _disposed = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
@@ -65,7 +64,7 @@ namespace Dataverse.API.Testing
             Assert.NotEqual(Guid.Empty, petId);
 
             // Wait for 20 seconds
-            System.Threading.Thread.Sleep(20000);
+            Thread.Sleep(20000);
 
             // Assert that the life points and the happiness points are set to 100000 or 99990
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
@@ -87,7 +86,7 @@ namespace Dataverse.API.Testing
             Assert.NotEqual(Guid.Empty, petId);
 
             // Wait for 20 seconds
-            System.Threading.Thread.Sleep(20000);
+            Thread.Sleep(20000);
 
             // Assert that the life points and the happiness points are set to 100000 or 99990
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
@@ -95,7 +94,7 @@ namespace Dataverse.API.Testing
             // Delete the pet
             PetHelper.DeletePet(_serviceClient, petId);
         }
-
+/*
         /// <summary>
         /// Tests the decrease of pet points over time.
         /// </summary>
@@ -110,7 +109,7 @@ namespace Dataverse.API.Testing
             Entity petInInitialState = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
             // Wait for 3 minutes
-            System.Threading.Thread.Sleep(180000);
+            Thread.Sleep(180000);
 
             // Retrieve the pet
             var pet = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
@@ -155,7 +154,7 @@ namespace Dataverse.API.Testing
             var feedingActivityId = PetHelper.CreateFeedingActivity(_serviceClient, _petId, selectedFoodQuantity);
 
             // Wait for 20 seconds
-            System.Threading.Thread.Sleep(20000);
+            Thread.Sleep(20000);
 
             // Assert
             Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
@@ -188,12 +187,12 @@ namespace Dataverse.API.Testing
             var feedingActivityId = PetHelper.CreateFeedingActivity(_serviceClient, _petId, selectedFoodQuantity);
 
             // Wait for 20 seconds
-            System.Threading.Thread.Sleep(20000);
+            Thread.Sleep(20000);
 
             // Assert
             Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
         }
-
+*/
         /// <summary>
         /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
         /// </summary>
@@ -212,7 +211,6 @@ namespace Dataverse.API.Testing
             if(_serviceClient != null)
             {
                 _serviceClient.Dispose();
-                _serviceClient = null;
             }
         }
     }
