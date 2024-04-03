@@ -17,7 +17,7 @@ namespace Dataverse.API.Testing
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
         /// </summary>
         /// <remarks>
-        /// The constructor initializes the service client using the environment variables.
+        /// The constructor initializes the service client.
         /// </remarks>
         public DataverseAPITests()
         {
@@ -71,7 +71,7 @@ namespace Dataverse.API.Testing
         /// Tests the creation of a pet entity.
         /// </summary>
         /// <remarks>
-        /// The test creates a pet entity with a random name, lifepoints, and happinesspoints.
+        /// The test creates a pet entity with a random name and the specified life and happiness points.
         /// </remarks>
         [Fact]
         public void CreatePet_SetNameAndPoints()
@@ -90,224 +90,101 @@ namespace Dataverse.API.Testing
         }
 
         /// <summary>
-        /// Tests the decrease of lifepoints and happinesspoints over time.
+        /// Tests the decrease of pet points over time.
         /// </summary>
         /// <remarks>
-        /// The test retrieves all the pets with lifepoints and happinesspoints greater than 100.
-        /// It then waits for 3 minutes and validates that the lifepoints and happinesspoints of the pets have decreased by at least 20 points.
+        /// The test retrieves a pet entity and waits for 3 minutes.
+        /// It then retrieves the pet entity again and validates that the lifepoints and happinesspoints have decreased by at least 20 points.
         /// </remarks>
         [Fact]
-        public void DecreasePointsOverTime()
+        public void PetPoints_DecreaseOverTime()
         {
-            // Retrieve all the pets with lifepoints and happinesspoints greater than 100
-            var query = new QueryExpression("rpo_pet")
-            {
-                ColumnSet = new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"),
-                Criteria = new FilterExpression
-                {
-                    Conditions =
-                    {
-                        new ConditionExpression("rpo_lifepoints", ConditionOperator.GreaterThan, 100),
-                        new ConditionExpression("rpo_happinesspoints", ConditionOperator.GreaterThan, 100)
-                    }
-                }
-            };
-
-            var pets = _serviceClient.RetrieveMultiple(query).Entities;
+            // Retrieve pet in initial state
+            Entity petInInitialState = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
             // Wait for 3 minutes
             System.Threading.Thread.Sleep(180000);
 
-            // Validate the lifepoints and happinesspoints of the pets
-            foreach (var pet in pets)
-            {
-                // Get the current pet
-                var updatedPet = _serviceClient.Retrieve("rpo_pet", pet.Id, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
+            // Retrieve the pet
+            var pet = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
-                var lifepoints = pet.GetAttributeValue<int>("rpo_lifepoints");
-                var happinesspoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
+            // Validate the lifepoints and happinesspoints of the pet
+            var initialLifePoints = petInInitialState.GetAttributeValue<int>("rpo_lifepoints");
+            var initialHappinessPoints = petInInitialState.GetAttributeValue<int>("rpo_happinesspoints");
+            var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
+            var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
-                var updatedLifepoints = updatedPet.GetAttributeValue<int>("rpo_lifepoints");
-                var updatedHappinesspoints = updatedPet.GetAttributeValue<int>("rpo_happinesspoints");
-
-                // Check if the lifepoints and happinesspoints have decreased by at least 20 points
-                Assert.True(lifepoints - updatedLifepoints >= 20);
-                Assert.True(happinesspoints - updatedHappinesspoints >= 20);
-            }
+            // Check if the lifepoints and happinesspoints have decreased by at least 20 points
+            Assert.True(initialLifePoints - lifePoints >= 20);
+            Assert.True(initialHappinessPoints - happinessPoints >= 20);
         }
     
         /// <summary>
         /// Tests the feeding of a pet entity.
         /// </summary>
         /// <remarks>
-        /// The test retrieves a pet entity with lifepoints less than 98000.
-        /// If no pet is found, a new pet entity is created with lifepoints less than 98000.
-        /// The test then randomly selects a quantity of food and creates a feeding activity for the pet entity.
-        /// It waits for 20 seconds and validates that the lifepoints of the pet entity have increased by the quantity of food selected.
+        /// The test update the life points of the pet entity to a random value between 10000 and 90000.
+        /// It then create a feeding activity for the pet entity with a random quantity of food between 10, 50, 100, 1000.
+        /// The test waits for 20 seconds and validates that the lifepoints of the pet entity have increased by the quantity of food selected.
         /// </remarks>
         [Fact]
-        public void FeedPet_WithLessThan98000LifePoints()
+        public void FeedPet_NotReachingInitialLifePoints()
         {
-            // Initialize the pet variable
-            Entity pet = new Entity("rpo_pet");
-
-            // Retrieve pets with less than 98000 lifepoints
-            var query = new QueryExpression("rpo_pet")
-            {
-                ColumnSet = new ColumnSet("rpo_lifepoints"),
-                Criteria = new FilterExpression
-                {
-                    Conditions =
-                    {
-                        new ConditionExpression("rpo_lifepoints", ConditionOperator.LessThan, 98000)
-                    }
-                }
-            };
-
-            var pets = _serviceClient.RetrieveMultiple(query).Entities;
-
-            // Check if there are any pets with less than 98000 lifepoints
-            if (pets.Count == 0)
-            {
-                // Create a pet, wait for 20 seconds - the time it takes for the lifepoints and happinesspoints to be initialized at 100 000
-                // Then update the pet's lifepoints to less than 98 000
-                pet = new Entity("rpo_pet");
-                pet["rpo_name"] = "Fluffy";
-
-                var petId = _serviceClient.Create(pet);
-
-                System.Threading.Thread.Sleep(20000);
-
-                pet["rpo_lifepoints"] = 97000;
-
-                _serviceClient.Update(pet);
-            } else {
-                // Get the first pet with less than 98 000 lifepoints
-                pet = pets[0];
-            }
-
-            // Randomly select a quantity of food
+            // Update the life points of the pet to a random value between 10000 and 90000
             var random = new Random();
-            var foodOptions = new Dictionary<int, int>
-            {
-                { 913610000, 10 },
-                { 913610001, 50 },
-                { 913610002, 100 },
-                { 913610003, 1000 }
-            };
-            var selectedFoodOption = foodOptions.ElementAt(random.Next(foodOptions.Count));
+            var lifePoints = random.Next(10000, 90000);
+            PetHelper.UpdatePetLifePoints(_serviceClient, _petId, lifePoints);
 
-            // Create a feeding activity for a pet with a quantity of food less than 98 000
-            Entity feedingActivity = new Entity("rpo_feeding");
-            feedingActivity["rpo_quantity"] = new OptionSetValue(selectedFoodOption.Key);
-            feedingActivity["regardingobjectid"] = new EntityReference("rpo_pet", pet.Id);
+            // Retrieve the pet
+            var petBeforeFeeding = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints"));
+            int initialLifePoints = petBeforeFeeding.GetAttributeValue<int>("rpo_lifepoints");
 
-            // Act
-            var feedingActivityId = _serviceClient.Create(feedingActivity);
+            // Randomly select a quantity of food between the following options: 10, 50, 100, 1000
+            random = new Random();
+            var foodQuantityOptions = new List<int> { 10, 50, 100, 1000 };
+            var selectedFoodQuantity = foodQuantityOptions[random.Next(foodQuantityOptions.Count)];
 
-            // Assert
-            Assert.NotEqual(Guid.Empty, feedingActivityId);
+            // Create a feeding activity
+            var feedingActivityId = PetHelper.CreateFeedingActivity(_serviceClient, _petId, selectedFoodQuantity);
 
             // Wait for 20 seconds
             System.Threading.Thread.Sleep(20000);
 
-            // Retrieve the pet
-            var updatedPet = _serviceClient.Retrieve("rpo_pet", pet.Id, new ColumnSet("rpo_lifepoints"));
-
-            // Validate the lifepoints of the pet
-            var lifepoints = updatedPet.GetAttributeValue<int>("rpo_lifepoints");
-
-            // Check if the lifepoints have increased by the quantity of food selected
-            Assert.Equal(pet.GetAttributeValue<int>("rpo_lifepoints") + selectedFoodOption.Value, lifepoints);
+            // Assert
+            Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
         }
     
         /// <summary>
         /// Tests the feeding of a pet entity.
         /// </summary>
         /// <remarks>
-        /// The test retrieves a pet entity with lifepoints greater than 98000.
-        /// If no pet is found, a new pet entity is created with lifepoints greater than 98000.
-        /// The test then randomly selects a quantity of food that will go over the initial lifepoints of the pet entity.
-        /// It creates a feeding activity for the pet entity and waits for 20 seconds.
-        /// The test then validates that the lifepoints of the pet entity have reached the initial lifepoints - 100 000.
+        /// The test update the life points of the pet entity to 99990.
+        /// It then create a feeding activity for the pet entity with a random quantity of food between 100, 1000.
+        /// The test waits for 20 seconds and validates that the lifepoints have increased without going over the initial life points value.
         /// </remarks>
         [Fact]
-        public void FeedPet_WithQuantityToGoOverInitialPoints()
+        public void FeedPet_ReachingInitialLifePoints()
         {
-            // Initialize the pet variable
-            Entity pet = new Entity("rpo_pet");
+            // Update the life points of the pet to 99990
+            PetHelper.UpdatePetLifePoints(_serviceClient, _petId, 99990);
 
-            // Retrieve pets with less than 98000 lifepoints
-            var query = new QueryExpression("rpo_pet")
-            {
-                ColumnSet = new ColumnSet("rpo_lifepoints"),
-                Criteria = new FilterExpression
-                {
-                    Conditions =
-                    {
-                        new ConditionExpression("rpo_lifepoints", ConditionOperator.GreaterThan, 99000)
-                    }
-                }
-            };
+            // Retrieve the pet
+            var petBeforeFeeding = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints"));
+            int initialLifePoints = petBeforeFeeding.GetAttributeValue<int>("rpo_lifepoints");
 
-            var pets = _serviceClient.RetrieveMultiple(query).Entities;
-
-            // Check if there are any pets with less than 98000 lifepoints
-            if (pets.Count == 0)
-            {
-                // Create a pet, wait for 20 seconds - the time it takes for the lifepoints and happinesspoints to be initialized at 100 000
-                // Then update the pet's lifepoints to less than 98 000
-                pet = new Entity("rpo_pet");
-                pet["rpo_name"] = "Fluffy";
-
-                var petId = _serviceClient.Create(pet);
-
-                System.Threading.Thread.Sleep(20000);
-
-                pet["rpo_lifepoints"] = 99990;
-
-                _serviceClient.Update(pet);
-            } else {
-                // Get the first pet with less than 98 000 lifepoints
-                pet = pets[0];
-            }
-
-            // Randomly select a quantity of food
+            // Randomly select a quantity of food between the following options: 100, 1000
             var random = new Random();
-            var foodOptions = new Dictionary<int, int>
-            {
-                { 913610000, 10 },
-                { 913610001, 50 },
-                { 913610002, 100 },
-                { 913610003, 1000 }
-            };
+            var foodQuantityOptions = new List<int> { 100, 1000 };
+            var selectedFoodQuantity = foodQuantityOptions[random.Next(foodQuantityOptions.Count)];
 
-            // Select a quantity of food that will go over the initial lifepoints
-            var quantityToGoOverInitialPoints = 100000 - pet.GetAttributeValue<int>("rpo_lifepoints") + 1;
-            var selectedFoodOption = foodOptions.Where(x => x.Value >= quantityToGoOverInitialPoints).First();
-
-            // Create a feeding activity for a pet with a quantity of food less than 98 000
-            Entity feedingActivity = new Entity("rpo_feeding");
-            feedingActivity["rpo_quantity"] = new OptionSetValue(selectedFoodOption.Key);
-            feedingActivity["regardingobjectid"] = new EntityReference("rpo_pet", pet.Id);
-
-            // Act
-            var feedingActivityId = _serviceClient.Create(feedingActivity);
-
-            // Assert
-            Assert.NotEqual(Guid.Empty, feedingActivityId);
+            // Create a feeding activity
+            var feedingActivityId = PetHelper.CreateFeedingActivity(_serviceClient, _petId, selectedFoodQuantity);
 
             // Wait for 20 seconds
             System.Threading.Thread.Sleep(20000);
 
-            // Retrieve the pet
-            var updatedPet = _serviceClient.Retrieve("rpo_pet", pet.Id, new ColumnSet("rpo_lifepoints"));
-
-            // Validate the lifepoints of the pet
-            var lifepoints = updatedPet.GetAttributeValue<int>("rpo_lifepoints");
-
-            // Check if the lifepoints have increased by the quantity of food selected
-            Assert.Equal(100000, lifepoints);
+            // Assert
+            Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
         }
     }
 }
