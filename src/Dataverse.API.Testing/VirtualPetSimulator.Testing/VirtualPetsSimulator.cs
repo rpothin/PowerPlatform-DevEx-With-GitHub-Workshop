@@ -45,7 +45,11 @@ namespace Dataverse.API.Testing
             }
 
             // Create a pet
-            _petId = PetHelper.CreateRandomPet(_serviceClient);
+            if (_petId == Guid.Empty)
+            {
+                // Create a pet
+                _petId = PetHelper.CreateRandomPet(_serviceClient);
+            }
         }
         
         /// <summary>
