@@ -76,21 +76,8 @@ namespace Dataverse.API.Testing
         [Fact]
         public void CreatePet_SetNameAndPoints()
         {
-            // Create a pet entity with the following attributes
-            List<string> petNames = new List<string> { "Fluffy", "Sparky", "Rover", "Bella", "Max", "Lucy", "Charlie", "Molly", "Buddy", "Daisy" };
-
-            Random random = new Random();
-            int index = random.Next(petNames.Count);
-
-            string randomPetName = petNames[index];
-
-            Entity pet = new Entity("rpo_pet");
-            pet["rpo_name"] = randomPetName;
-            pet["rpo_lifepoints"] = 999;
-            pet["rpo_happinesspoints"] = 999;
-
             // Act
-            var petId = _serviceClient.Create(pet);
+            var petId = PetHelper.CreateRandomPetWithLifeAndHappinessPoints(_serviceClient, 50000, 60000);
 
             // Assert
             Assert.NotEqual(Guid.Empty, petId);
@@ -98,25 +85,8 @@ namespace Dataverse.API.Testing
             // Wait for 20 seconds
             System.Threading.Thread.Sleep(20000);
 
-            // Retrieve the created pet
-            var createdPet = _serviceClient.Retrieve("rpo_pet", petId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
-
-            // Validate the lifepoints and happinesspoints of the pet
-            var lifepoints = createdPet.GetAttributeValue<int>("rpo_lifepoints");
-            var happinesspoints = createdPet.GetAttributeValue<int>("rpo_happinesspoints");
-
-            // Check if the lifepoints and happinesspoints are not equal to 100000
-            // If not, check if the lifepoints and happinesspoints are equal to 99990
-            if (lifepoints != 100000 || happinesspoints != 100000)
-            {
-                Assert.Equal(99990, lifepoints);
-                Assert.Equal(99990, happinesspoints);
-            }
-            else
-            {
-                Assert.Equal(100000, lifepoints);
-                Assert.Equal(100000, happinesspoints);
-            }
+            // Assert that the life points and the happiness points are set to 100000 or 99990
+            Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
         }
 
         /// <summary>
