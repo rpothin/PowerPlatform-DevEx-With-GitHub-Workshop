@@ -66,7 +66,7 @@ namespace Dataverse.API.Testing
             // Assert that the life points and the happiness points are set to 100000 or 99990
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, _petId));
         }
-/*
+
         /// <summary>
         /// Tests the creation of a pet entity.
         /// </summary>
@@ -89,6 +89,7 @@ namespace Dataverse.API.Testing
             Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
         }
 
+/*
         /// <summary>
         /// Tests the decrease of pet points over time.
         /// </summary>
