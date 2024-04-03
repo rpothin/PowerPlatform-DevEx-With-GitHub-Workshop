@@ -49,6 +49,9 @@ namespace Dataverse.API.Testing
             {
                 // Create a pet
                 _petId = PetHelper.CreateRandomPet(_serviceClient);
+
+                // Wait for 20 seconds
+                Thread.Sleep(20000);
             }
         }
         
@@ -115,8 +118,6 @@ namespace Dataverse.API.Testing
             // Retrieve pet in initial state
             Entity petInitialState = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
-            Console.WriteLine($"Initial pet id: {petInitialState.Id}");
-
             // Wait for 3 minutes
             Thread.Sleep(180000);
 
@@ -130,9 +131,6 @@ namespace Dataverse.API.Testing
             var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
             // Check if the lifepoints and happinesspoints have decreased by at least 20 points
-            Console.WriteLine($"Initial life points: {initialLifePoints}, Current life points: {lifePoints}");
-            Console.WriteLine($"Initial happiness points: {initialHappinessPoints}, Current happiness points: {happinessPoints}");
-
             Assert.True(initialLifePoints - lifePoints >= 20);
             Assert.True(initialHappinessPoints - happinessPoints >= 20);
         }
@@ -216,8 +214,8 @@ namespace Dataverse.API.Testing
             // Dispose managed resources.
             if (_petId != Guid.Empty)
             {
-                //PetHelper.DeletePet(_serviceClient, _petId);
-                //_petId = Guid.Empty;
+                PetHelper.DeletePet(_serviceClient, _petId);
+                _petId = Guid.Empty;
             }
 
             if(_serviceClient != null)
