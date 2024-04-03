@@ -12,6 +12,7 @@ namespace Dataverse.API.Testing
     {
         private ServiceClient _serviceClient;
         private Guid _petId;
+        private bool _disposed = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataverseAPITests"/> class.
@@ -43,6 +44,9 @@ namespace Dataverse.API.Testing
             {
                 throw new InvalidOperationException("Failed to initialize ServiceClient.", ex);
             }
+
+            // Create a pet
+            _petId = PetHelper.CreateRandomPet(_serviceClient);
         }
         
         /// <summary>
@@ -55,16 +59,16 @@ namespace Dataverse.API.Testing
         public void CreatePet_SetOnlyName()
         {
             // Act
-            _petId = PetHelper.CreateRandomPet(_serviceClient);
+            var petId = PetHelper.CreateRandomPet(_serviceClient);
 
             // Assert
-            Assert.NotEqual(Guid.Empty, _petId);
+            Assert.NotEqual(Guid.Empty, petId);
 
             // Wait for 20 seconds
             System.Threading.Thread.Sleep(20000);
 
             // Assert that the life points and the happiness points are set to 100000 or 99990
-            Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, _petId));
+            Assert.True(PetHelper.ArePetLifeAndHappinessPointsCorrectlyInitialized(_serviceClient, petId));
         }
 
         /// <summary>
@@ -91,7 +95,6 @@ namespace Dataverse.API.Testing
             // Delete the pet
             PetHelper.DeletePet(_serviceClient, petId);
         }
-
 
         /// <summary>
         /// Tests the decrease of pet points over time.
@@ -189,9 +192,28 @@ namespace Dataverse.API.Testing
 
             // Assert
             Assert.True(PetHelper.ArePetLifePointsCorrectlyUpdatedAfterFeedingActivity(_serviceClient, _petId, initialLifePoints, selectedFoodQuantity));
+        }
 
-            // Delete the pet
-            PetHelper.DeletePet(_serviceClient, _petId);
+        /// <summary>
+        /// Disposes the resources used by the <see cref="DataverseAPITests"/> class.
+        /// </summary>
+        /// <remarks>
+        /// The method disposes the service client and deletes the pet entity.
+        /// </remarks>
+        protected virtual void Dispose()
+        {
+            // Dispose managed resources.
+            if (_petId != Guid.Empty)
+            {
+                PetHelper.DeletePet(_serviceClient, _petId);
+                _petId = Guid.Empty;
+            }
+
+            if(_serviceClient != null)
+            {
+                _serviceClient.Dispose();
+                _serviceClient = null;
+            }
         }
     }
 }
