@@ -8,7 +8,7 @@ namespace Dataverse.API.Testing
     /// <summary>
     /// Represents a class containing tests for the Dataverse API.
     /// </summary>
-    public class DataverseAPITests
+    public class DataverseAPITests: IDisposable
     {
         private ServiceClient _serviceClient;
         private Guid _petId;
@@ -203,7 +203,7 @@ namespace Dataverse.API.Testing
         /// <remarks>
         /// The method disposes the service client and deletes the pet entity.
         /// </remarks>
-        protected virtual void Dispose()
+        public void Dispose()
         {
             // Dispose managed resources.
             if (_petId != Guid.Empty)
