@@ -110,7 +110,9 @@ namespace Dataverse.API.Testing
         public void PetPoints_DecreaseOverTime()
         {
             // Retrieve pet in initial state
-            Entity petInInitialState = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
+            Entity petInitialState = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
+
+            Console.WriteLine($"Initial pet id: {petInitialState.Id}");
 
             // Wait for 3 minutes
             Thread.Sleep(180000);
@@ -119,8 +121,8 @@ namespace Dataverse.API.Testing
             var pet = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_lifepoints", "rpo_happinesspoints"));
 
             // Validate the lifepoints and happinesspoints of the pet
-            var initialLifePoints = petInInitialState.GetAttributeValue<int>("rpo_lifepoints");
-            var initialHappinessPoints = petInInitialState.GetAttributeValue<int>("rpo_happinesspoints");
+            var initialLifePoints = petInitialState.GetAttributeValue<int>("rpo_lifepoints");
+            var initialHappinessPoints = petInitialState.GetAttributeValue<int>("rpo_happinesspoints");
             var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
             var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
