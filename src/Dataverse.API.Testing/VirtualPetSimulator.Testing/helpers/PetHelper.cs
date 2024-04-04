@@ -134,7 +134,7 @@ namespace VirtualPetsSimulator.Helpers
             var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
 
             // Check if the life points are correctly updated
-            if (lifePointsBeforeFeeding + foodQuantity == _initialLifePoints) {
+            if (lifePointsBeforeFeeding + foodQuantity >= _initialLifePoints) {
                 return lifePoints == _initialLifePoints;
             } else {
                 // Consider the option that the life points already decreased by 10
