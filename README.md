@@ -46,7 +46,7 @@ This template repository is a support for a workshop that will guide you combini
 4. [Organize your work](./docs/04-OrganizeYourWork.md) (15 min)
 5. [But first some ALM setup](./docs/05-SomeALMSetup.md) (30 min)
 6. [Code it and ship it!](./docs/06-CodeItAndShipIt.md) (60 min)
-7. Job's not finished! (30 min)
+7. [Job's not finished!](./docs/07-JobsNotFinished.md) (30 min)
 
 > [!NOTE]
 > The remaining time will be for questions or discussions we did not get the chance to cover earlier.
