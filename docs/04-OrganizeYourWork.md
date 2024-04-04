@@ -58,7 +58,7 @@ In your repository created from this GitHub repository template in the [chapter 
 
 In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, from the **Code** tab,
 1. Press the `.` key of your keyboard for a few seconds to open the [github.dev web-based editor](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
-2. Under [.github/ISSUE_TEMPLATE/](../.github/ISSUE_TEMPLATE/) directory, create new `2-bug.yml` file
+2. Under [.github/ISSUE_TEMPLATE/](../.github/ISSUE_TEMPLATE/) directory, create new `3-bug.yml` file
 3. Enter the following code into the new file
 
 ```yml
