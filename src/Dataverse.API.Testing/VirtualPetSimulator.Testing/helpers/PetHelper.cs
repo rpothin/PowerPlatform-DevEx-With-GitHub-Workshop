@@ -8,6 +8,7 @@ namespace VirtualPetsSimulator.Helpers
     {
         private static int _initialLifePoints = 100000;
         private static int _initialHappinessPoints = 100000;
+        private static int _cuddleHappinessPoints = 1000;
 
         /// <summary>
         /// Create a random pet
@@ -84,6 +85,23 @@ namespace VirtualPetsSimulator.Helpers
         }
 
         /// <summary>
+        /// Update the happiness points of a pet
+        /// </summary>
+        /// <param name="serviceClient">The service client</param>
+        /// <param name="petId">The id of the pet</param>
+        /// <param name="happinessPoints">The new happiness points</param>
+        /// <remarks>
+        /// This method updates the happiness points of the pet
+        /// </remarks>
+        public static void UpdatePetHappinessPoints(ServiceClient serviceClient, Guid petId, int happinessPoints)
+        {
+            var pet = new Entity("rpo_pet");
+            pet.Id = petId;
+            pet["rpo_happinesspoints"] = happinessPoints;
+            serviceClient.Update(pet);
+        }
+
+        /// <summary>
         /// Create a feeding activity
         /// </summary>
         /// <param name="serviceClient">The service client</param>
@@ -139,6 +157,50 @@ namespace VirtualPetsSimulator.Helpers
             } else {
                 // Consider the option that the life points already decreased by 10
                 return lifePoints == lifePointsBeforeFeeding + foodQuantity || lifePoints == lifePointsBeforeFeeding + foodQuantity - 10;
+            }
+        }
+
+        /// <summary>
+        /// Create a cuddle activity
+        /// </summary>
+        /// <param name="serviceClient">The service client</param>
+        /// <param name="petId">The id of the pet</param>
+        /// <returns>The id of the created cuddle activity</returns>
+        /// <remarks>
+        /// This method creates a new cuddle activity for the pet
+        /// </remarks>
+        public static Guid CreateCuddleActivity(ServiceClient serviceClient, Guid petId)
+        {
+            Entity cuddleActivity = new Entity("rpo_cuddle");
+            cuddleActivity["regardingobjectid"] = new EntityReference("rpo_pet", petId);
+
+            return serviceClient.Create(cuddleActivity);
+        }
+
+        /// <summary>
+        /// Check if the happiness points are correctly updated after a cuddle activity
+        /// </summary>
+        /// <param name="serviceClient">The service client</param>
+        /// <param name="petId">The id of the pet</param>
+        /// <param name="happinessPointsBeforeCuddle">The happiness points of the pet before the cuddle activity</param>
+        /// <returns>True if the happiness points are correctly updated, false otherwise</returns>
+        /// <remarks>
+        /// This method checks if the happiness points of the pet are correctly updated after a cuddle activity
+        /// </remarks>
+        public static bool ArePetHapppinessPointsCorrectlyUpdatedAfterCuddleActivity(ServiceClient serviceClient, Guid petId, int happinessPointsBeforeCuddle)
+        {
+            // Retrieve the pet
+            var pet = serviceClient.Retrieve("rpo_pet", petId, new ColumnSet("rpo_happinesspoints"));
+
+            // Get the happiness points
+            var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
+
+            // Check if the happiness points are correctly updated
+            if (happinessPointsBeforeCuddle + _cuddleHappinessPoints >= _initialHappinessPoints) {
+                return happinessPoints == _initialHappinessPoints;
+            } else {
+                // Consider the option that the happiness points already decreased by 10
+                return happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints || happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints - 10;
             }
         }
 
