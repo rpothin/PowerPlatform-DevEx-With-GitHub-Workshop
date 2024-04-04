@@ -2,7 +2,7 @@
 
 | **Goal**                                                                                                                                                                                 | **Estimated duration** |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Understand that writing code is a part of our mission of building applications and we still need to be conscious about important things, like Security, and GitHub can help us with that | 30 min                 |
+| Understand that writing code is a part of our mission of building applications but we still need to be conscious about important things, like Security, and GitHub can help us with that | 30 min                 |
 
 ![Kobe Bryant - Job's not finished](https://i.pinimg.com/originals/a4/b9/aa/a4b9aa5acd5bcd4c8c508db4bb48d5c1.jpg)
 
