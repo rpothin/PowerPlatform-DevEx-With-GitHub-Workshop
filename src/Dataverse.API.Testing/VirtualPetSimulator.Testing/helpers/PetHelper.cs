@@ -151,10 +151,18 @@ namespace VirtualPetsSimulator.Helpers
             // Get the life points
             var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
 
+            Console.WriteLine("lifePointsBeforeFeeding: " + lifePointsBeforeFeeding);
+            Console.WriteLine("foodQuantity: " + foodQuantity);
+            Console.WriteLine("lifePoints: " + lifePoints);
+            Console.WriteLine("initialLifePoints: " + _initialLifePoints);
+            Console.WriteLine("lifePointsBeforeFeeding + foodQuantity: " + (lifePointsBeforeFeeding + foodQuantity));
+
             // Check if the life points are correctly updated
             if (lifePointsBeforeFeeding + foodQuantity >= _initialLifePoints) {
+                Console.WriteLine("1");
                 return lifePoints == _initialLifePoints;
             } else {
+                Console.WriteLine("2");
                 // Consider the option that the life points already decreased by 10
                 return lifePoints == lifePointsBeforeFeeding + foodQuantity || lifePoints == lifePointsBeforeFeeding + foodQuantity - 10;
             }
@@ -195,19 +203,11 @@ namespace VirtualPetsSimulator.Helpers
             // Get the happiness points
             var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
-            Console.WriteLine("happinessPointsBeforeCuddle: " + happinessPointsBeforeCuddle);
-            Console.WriteLine("happinessPoints: " + happinessPoints);
-            Console.WriteLine("initialHappinessPoints: " + _initialHappinessPoints);
-            Console.WriteLine("cuddleHappinessPoints: " + _cuddleHappinessPoints);
-            Console.WriteLine("happinessPointsBeforeCuddle + _cuddleHappinessPoints: " + (happinessPointsBeforeCuddle + _cuddleHappinessPoints));
-
             // Check if the happiness points are correctly updated
             if (happinessPointsBeforeCuddle + _cuddleHappinessPoints >= _initialHappinessPoints) {
-                Console.WriteLine("happinessPoints == _initialHappinessPoints");
                 return happinessPoints == _initialHappinessPoints;
             } else {
                 // Consider the option that the happiness points already decreased by 10
-                Console.WriteLine("happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints || happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints - 10");
                 return happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints || happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints - 10;
             }
         }
