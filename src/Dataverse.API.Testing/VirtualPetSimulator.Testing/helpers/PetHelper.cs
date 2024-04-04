@@ -151,18 +151,10 @@ namespace VirtualPetsSimulator.Helpers
             // Get the life points
             var lifePoints = pet.GetAttributeValue<int>("rpo_lifepoints");
 
-            Console.WriteLine("lifePointsBeforeFeeding: " + lifePointsBeforeFeeding);
-            Console.WriteLine("foodQuantity: " + foodQuantity);
-            Console.WriteLine("lifePoints: " + lifePoints);
-            Console.WriteLine("initialLifePoints: " + _initialLifePoints);
-            Console.WriteLine("lifePointsBeforeFeeding + foodQuantity: " + (lifePointsBeforeFeeding + foodQuantity));
-
             // Check if the life points are correctly updated
             if (lifePointsBeforeFeeding + foodQuantity >= _initialLifePoints) {
-                Console.WriteLine("1");
                 return lifePoints == _initialLifePoints;
             } else {
-                Console.WriteLine("2");
                 // Consider the option that the life points already decreased by 10
                 return lifePoints == lifePointsBeforeFeeding + foodQuantity || lifePoints == lifePointsBeforeFeeding + foodQuantity - 10;
             }
