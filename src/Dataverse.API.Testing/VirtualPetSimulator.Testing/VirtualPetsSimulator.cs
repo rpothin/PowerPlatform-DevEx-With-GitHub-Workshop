@@ -54,7 +54,7 @@ namespace Dataverse.API.Testing
                 Thread.Sleep(20000);
             }
         }
-/*     
+        
         /// <summary>
         /// Tests the creation of a pet entity.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Dataverse.API.Testing
             // Assert
             Assert.True(PetHelper.ArePetHapppinessPointsCorrectlyUpdatedAfterCuddleActivity(_serviceClient, _petId, initialHappinessPoints));
         }
-*/
+
         /// <summary>
         /// Tests the cuddling of a pet entity.
         /// </summary>
