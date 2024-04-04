@@ -242,7 +242,7 @@ namespace Dataverse.API.Testing
         /// The test waits for 20 seconds and validates that the happiness points have increased without going over the initial happiness points value.
         /// </remarks>
         [Fact]
-        public void CuddlePet_ReacingInitialHappinessPoints()
+        public void CuddlePet_ReachingInitialHappinessPoints()
         {
             // Update the happiness points of the pet to 99990
             PetHelper.UpdatePetHappinessPoints(_serviceClient, _petId, 99990);
@@ -250,6 +250,8 @@ namespace Dataverse.API.Testing
             // Retrieve the pet
             var petBeforeCuddling = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_happinesspoints"));
             int initialHappinessPoints = petBeforeCuddling.GetAttributeValue<int>("rpo_happinesspoints");
+
+            Console.WriteLine($"Initial happiness points: {initialHappinessPoints}");
 
             // Create a cuddling activity
             var cuddlingActivityId = PetHelper.CreateCuddleActivity(_serviceClient, _petId);
