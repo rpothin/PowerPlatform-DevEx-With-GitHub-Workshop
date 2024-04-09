@@ -6,7 +6,9 @@
 
 ## Hi 👋🏼 I am your host
 
-// Image of a PowerPoint deck where the host of the workshop can present themselves (_picture, title, community activities, expertise, hobbies..._)
+<!--- Image of a PowerPoint deck where the host of the workshop can present themselves (_picture, title, community activities, expertise, hobbies..._) --->
+
+![RaphaelPothin_Workshop_Improve Power Platform developer’s experience with GitHub](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/a3793169-1008-4735-b821-bb45e5ca99cb)
 
 ## What will we try to achieve together? 🤔
 
