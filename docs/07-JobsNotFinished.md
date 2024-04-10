@@ -10,11 +10,27 @@
 
 ### [Code scanning](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning)
 
+> [!NOTE]
+> Not available in the repository while its visibility is private. I will need to wait the last days to finalize this section.
+> I will try first to let GitHub try to setup the code scanning related to the code under `resources/` for me.
+> If it doesn't work, I will try to do it manually.
+
 ### [Secret scanning](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning#about-secret-scanning)
+
+> [!NOTE]
+> Not available in the repository while its visibility is private. I will need to wait the last days to finalize this section.
+> I will try to test and document a demonstration scenario in a different repository to show how it works during the workshop.
 
 ## Dependencies management
 
 ### [Dependency graph](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph)
+
+// Screenshot to add here
+
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to access the Dependency graph:
+1. Go to the `Insights` tab of your repository
+2. Click on the `Dependency graph` menu
+3. You should see the list of dependencies used in your repository
 
 ### [Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
 
