@@ -25,7 +25,7 @@
 
 ### [Dependency graph](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph)
 
-// Screenshot to add here
+![image](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/assets/23240245/a75c1286-3022-4cbc-8a61-befff0a3e54e)
 
 In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to access the Dependency graph:
 1. Go to the `Insights` tab of your repository
