@@ -59,7 +59,11 @@ To check the status of these capabilities in your repository created from this G
 2. Under the `Security` section, click on the `Code security and analysis` menu
 3. Verify that the following options are enabled: `Dependency graph`, `Dependabot alerts` and `Dependabot security updates`
 
-- [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
-- [Reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request)
+#### [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
+
+...
+
+> [!NOTE]
+> Around dependencies maangement, there is also the following capability available in GitHub: [Reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request)
 
 [⬅️ Previous chapter](./06-CodeItAndShipIt.md) | [🏠 Main agenda](./README.md)
