@@ -50,8 +50,15 @@ In your repository created from this GitHub repository template in the [chapter 
 
 ### [Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
 
-- [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts#github-dependabot-alerts-for-vulnerable-dependencies)
-- [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates)
+#### [Dependabot alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts#github-dependabot-alerts-for-vulnerable-dependencies) & [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates)
+
+These amazing security capabilities are enabled by default in public repositories and can easily be enabled in private repositories.
+
+To check the status of these capabilities in your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below:
+1. Go to the `Settings` tab of your repository
+2. Under the `Security` section, click on the `Code security and analysis` menu
+3. Verify that the following options are enabled: `Dependency graph`, `Dependabot alerts` and `Dependabot security updates`
+
 - [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
 - [Reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request)
 
