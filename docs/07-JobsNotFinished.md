@@ -36,7 +36,6 @@ In your repository created from this GitHub repository template in the [chapter 
 > [!CAUTION]
 > If you use the link provided in the error message to bypass the secret scanning and run again the push command, you will be able to push the changes to your repository.
 > **Do not do that!** except if you are really sure to know what you are doing. The secret will stay "exposed" in the secret scanning logs of your repository.
-> The secret scanning is a security feature that helps you to avoid pushing sensitive information to your repository.
 
 ## Dependencies management
 
