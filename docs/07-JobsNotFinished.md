@@ -17,7 +17,7 @@
 
 ### [Secret scanning](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning#about-secret-scanning)
 
-In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to verify if the GitHub Secret Scanning capability is enabled:
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to verify if the GitHub Secret Scanning capability is enabled and to test it:
 1. Go to the `Settings` tab of your repository
 2. Under the `Security` section, click on the `Code security and analysis` menu
 3. Go to the bottom of the page and validate that under `Secret scanning` the following options are enabled: `Receive alerts on GitHub for detected secrets, keys, or other tokens.` and `Push protection`
