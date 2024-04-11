@@ -17,9 +17,26 @@
 
 ### [Secret scanning](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning#about-secret-scanning)
 
-> [!NOTE]
-> Not available in the repository while its visibility is private. I will need to wait the last days to finalize this section.
-> I will try to test and document a demonstration scenario in a different repository to show how it works during the workshop.
+In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to verify if the GitHub Secret Scanning capability is enabled:
+1. Go to the `Settings` tab of your repository
+2. Under the `Security` section, click on the `Code security and analysis` menu
+3. Go to the bottom of the page and validate that under `Secret scanning` the following options are enabled: `Receive alerts on GitHub for detected secrets, keys, or other tokens.` and `Push protection`
+4. In your GitHub Codespace, create a new file named `test.json` and add the following content where you replace the value of the `key` property with a **real** secret value related to an existing app registration that will be provided by the workshop host:
+   ```json
+   {
+     "key": ""
+   }
+   ```
+5. Create a commit, and in your terminal run the following command to try to push the changes to your repository:
+   ```bash
+   git push
+   ```
+6. You should see an error message related to the secret value you added in the `test.json` file
+
+> [!CAUTION]
+> If you use the link provided in the error message to bypass the secret scanning and run again the push command, you will be able to push the changes to your repository.
+> **Do not do that!** except if you are really sure to know what you are doing. The secret will stay "exposed" in the secret scanning logs of your repository.
+> The secret scanning is a security feature that helps you to avoid pushing sensitive information to your repository.
 
 ## Dependencies management
 
