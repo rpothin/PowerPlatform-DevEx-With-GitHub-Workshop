@@ -11,7 +11,7 @@
 ### [Code scanning](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning)
 
 > [!NOTE]
-> Not available in the repository while its visibility is private. I will need to wait the last days to finalize this section.
+> Not available in the repository while its visibility is [private](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning#about-billing-for-code-scanning). I will need to wait the last days to finalize this section.
 > I will try first to let GitHub try to setup the code scanning related to the code under `resources/` for me.
 > If it doesn't work, I will try to do it manually.
 
