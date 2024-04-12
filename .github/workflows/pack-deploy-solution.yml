@@ -37,7 +37,7 @@ jobs:
         working-directory: resources/06-CodeItAndShipIt/backend-development/VirtualPetSimulator
 
       - name: Store packed solution as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: solution
           path: resources/06-CodeItAndShipIt/backend-development/VirtualPetSimulator/bin/Debug/VirtualPetSimulator.zip
