@@ -61,7 +61,10 @@ To check the status of these capabilities in your repository created from this G
 
 #### [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
 
-...
+> [!NOTE]
+> This capability is not enabled by default in repositories. You need to enable it manually by configuring a `.github/dependabot.yml` file in your repository.
+> A sample configuration file is available in the `.github` folder of this repository template.
+> For the workshop, we will see if there are pull requests created by Dependabot we could look at together.
 
 > [!NOTE]
 > Around dependencies maangement, there is also the following capability available in GitHub: [Reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request)
