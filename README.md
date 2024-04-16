@@ -38,7 +38,7 @@ This template repository is a support for a workshop that will guide you combini
 ## Workshop agenda
 
 > [!NOTE]
-> The estimated duration of the workshop is 3 hours and the proposed agenda below will take this into account. But if you are going through this workshop by yourself you can definitely take the time you need to go through the different chapters. The main objective is that at the end you got the expected outcome from this journey.
+> The estimated duration of the workshop is 3 hours and the proposed agenda below will take this into account. But if you are going through this workshop by yourself, you can definitely take the time you need to go through the different chapters. The main objective is that at the end you get the expected outcome from this journey.
 
 1. [Introduction](./docs/01-Introduction.md) (15min) - _Only relevant for in-person workshop with a group_
 2. [Quick tour of GitHub](./docs/02-QuickTourOfGitHub.md) (15 min)
