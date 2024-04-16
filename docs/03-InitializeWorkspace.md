@@ -42,4 +42,4 @@
 > There are some URLs pointing directly to the source GitHub template repository at many places, so please don't use this repository as is for a project without updating these references.
 > To address this point, you can simply search for "rpothin/PowerPlatform-DevEx-With-GitHub-Workshop" in the entire repository and change these references with your own repository full name (`<organization>/<repository name>`).
 
-[⬅️ Previous chapter](./02-QuickTourOfGitHub.md) | [🏡 README](../README.md) | [➡️ Next chapter](./04-OrganizeYourWork.md)
+[⬅️ Previous chapter](./02-QuickTourOfGitHub.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./04-OrganizeYourWork.md)

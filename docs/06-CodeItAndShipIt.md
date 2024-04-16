@@ -133,4 +133,4 @@ Here are the main requirements covered by the solution:
 2. Develop tests for the `Virtual Pet Simulator` solution to ensure that the documented requirements are met.
 3. Commit and push your changes to the `main` branch of your repository to validate your tests - _this will trigger the GitHub workflow you created in the previous step to build and run the tests considering your Power Platform environment where the solution is deployed_.
 
-[⬅️ Previous chapter](./05-SomeALMSetup.md) | [🏠 Main agenda](./README.md) | [Next chapter ➡️](./07-JobsNotFinished.md)
+[⬅️ Previous chapter](./05-SomeALMSetup.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [Next chapter ➡️](./07-JobsNotFinished.md)

@@ -69,4 +69,4 @@ To check the status of these capabilities in your repository created from this G
 > [!NOTE]
 > Around dependencies maangement, there is also the following capability available in GitHub: [Reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request)
 
-[⬅️ Previous chapter](./06-CodeItAndShipIt.md) | [🏠 Main agenda](./README.md)
+[⬅️ Previous chapter](./06-CodeItAndShipIt.md) | [🏡 Main agenda](../README.md#workshop-agenda)

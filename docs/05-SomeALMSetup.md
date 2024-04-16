@@ -129,4 +129,4 @@ In your GitHub Codespaces created in the previous step,
 > [!NOTE]
 > In the next chapter, we will implement a .Net project and test the workflow created in this chapter.
 
-[⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 README](../README.md) | [➡️ Next chapter](./06-CodeItAndShipIt.md)
+[⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./06-CodeItAndShipIt.md)

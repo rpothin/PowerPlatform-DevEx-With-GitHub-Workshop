@@ -26,4 +26,4 @@ In this GitHub template repository - _which will be the starting point of your j
 2. Create a new discussion to quickly introduce yourself
 3. React to other discussions from fellow participants to share a smile 😊
 
-[🏡 README](../README.md) | [➡️ Next chapter](./02-QuickTourOfGitHub.md)
+[🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./02-QuickTourOfGitHub.md)
