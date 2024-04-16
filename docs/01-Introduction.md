@@ -20,7 +20,7 @@ Join us on this journey as we unlock the full potential of GitHub for Power Plat
 
 ## But first, let start with an icebreaker activity 😁
 
-In this GitHub template repository - _which will be the starting point of your journey_ - I invite you to:
+In this [GitHub template repository](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/) - _which will be the starting point of your journey_ - I invite you to:
 
 1. Go to the [**Just say hi**](https://github.com/rpothin/PowerPlatform-DevEx-With-GitHub-Workshop/discussions/categories/just-say-hi) discussion category
 2. Create a new discussion to quickly introduce yourself
