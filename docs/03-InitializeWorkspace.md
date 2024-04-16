@@ -33,7 +33,7 @@
 ## Validation of the configuration of the repository created
 
 - The visibility of the repository should be consistent with the option you selected (_public or private_)
-- You should have all the following tabs in your repository: Issues, Pull requests, Discussions, Actions, Projects, Security, Insights and Settings
+- You should have, at least, the following tabs in your repository: Issues, Pull requests, Actions, Projects, Security, Insights and Settings
 - You should have only 1 branch named **main**
 
 > [!WARNING]
