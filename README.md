@@ -29,7 +29,7 @@
 
 [**Power Platform**](https://powerplatform.microsoft.com/en-us/what-is-power-platform/) is an extremely rich ecosystem allowing all developers (_from no-code to code-first developers_) to build and deliver value in a time effective way.
 
-[**GitHub**](https://github.com/features) has nothing to envy to Power Platform in terms of capabilities to offer a great developer experience and also contribute in improving make the developers' work flow in the value stream.
+[**GitHub**](https://github.com/features) has nothing to envy about Power Platform in terms of capabilities to offer a great developer experience and also contribute in improving make the developers' work flow in the value stream.
 
 This template repository is a support for a workshop that will guide you combining Power Platform and GitHub to [**achieve more**](https://www.microsoft.com/en-us/about/values).
 
