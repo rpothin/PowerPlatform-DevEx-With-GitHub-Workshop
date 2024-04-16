@@ -52,7 +52,7 @@ In your repository created from this GitHub repository template in the [chapter 
 4. Enter the requested information: Title, Description and Priority
 5. Check the `Code of conduct` box
 6. Click on the `Submit new issue` button
-7. Add the new issue to the project and the milestone created in the previous step
+7. Add the new issue to the project and the milestone created in the previous step by using the related sections in the right panel
 
 ### 4. Create an issue form for bugs
 
