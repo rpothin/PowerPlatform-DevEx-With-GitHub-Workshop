@@ -30,8 +30,6 @@
 
 5. Click on the `Create repository` button to finalize the creation of the repository
 
-// Add screenshot to illustrate the repository initialized
-
 ## Validation of the configuration of the repository created
 
 - The visibility of the repository should be consistent with the option you selected (_public or private_)
