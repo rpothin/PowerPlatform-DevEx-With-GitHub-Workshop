@@ -53,7 +53,7 @@ This template repository is a support for a workshop that will guide you combini
 
 ## ❗ Code of Conduct
 
-I, **Raphael Pothin** ([@rpothin](https://github.com/rpothin)), as creator of this project, am dedicated to providing a welcoming, diverse, and harrassment-free experience for everyone.
+I, **Raphael Pothin** ([@rpothin](https://github.com/rpothin)), as creator of this project, am dedicated to providing a welcoming, diverse, and harassment-free experience for everyone.
 I expect everyone visiting or participating in this project to abide by the following [**Code of Conduct**](CODE_OF_CONDUCT.md).
 Please read it.
 
