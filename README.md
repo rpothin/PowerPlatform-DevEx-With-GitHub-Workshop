@@ -3,7 +3,7 @@
         Power Platform DevEx With GitHub Workshop
     </h1>
     <h3 align="center">
-        Hello and welcome to this workshop where we will explore together how GitHub can help improve Power Platform developer's experience
+        Hello and welcome to this workshop where we will explore together how GitHub can help improve Power Platform developer experience
     </h3>
 </p>
 
