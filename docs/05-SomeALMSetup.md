@@ -87,13 +87,7 @@ In your GitHub Codespaces created in the previous step,
 
 4. Once the file is completed, commit and push the changes to the repository
 
-> [!WARNING]
-> To simplify this configuration you can push the changes directly to the `main` branch, but in a real-world scenario, you should create a new branch, push the changes to it, and then create a pull request to merge the changes into the `main` branch.
-
 5. Validate that the workflow appears in the `Actions` tab of your repository
-
-> [!NOTE]
-> In the next chapter, we will implement a PCF component and test the workflow created in this chapter.
 
 ### Backend development track
 
@@ -124,12 +118,6 @@ In your GitHub Codespaces created in the previous step,
 
 4. Once the file is completed, commit and push the changes to the repository
 
-> [!WARNING]
-> To simplify this configuration you can push the changes directly to the `main` branch, but in a real-world scenario, you should create a new branch, push the changes to it, and then create a pull request to merge the changes into the `main` branch.
-
 5. Validate that the workflow appears in the `Actions` tab of your repository
-
-> [!NOTE]
-> In the next chapter, we will implement a .Net project and test the workflow created in this chapter.
 
 [⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./06-CodeItAndShipIt.md)
