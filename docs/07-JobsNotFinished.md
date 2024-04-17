@@ -45,8 +45,10 @@ In your repository created from this GitHub repository template in the [chapter 
 
 In your repository created from this GitHub repository template in the [chapter 3](./03-InitializeWorkspace.md) of this workshop, follow the steps below to access the Dependency graph:
 1. Go to the `Insights` tab of your repository
-2. Click on the `Dependency graph` menu
-3. You should see the list of dependencies used in your repository
+2. Click on `Dependency graph`
+3. Click on the `Enable the dependency graph` button
+4. Refresh the page
+5. You should see the list of dependencies used in your repository
 
 ### [Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
 
