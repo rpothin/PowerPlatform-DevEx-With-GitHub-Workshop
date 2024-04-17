@@ -9,7 +9,7 @@
 
 ## Frontend development track
 
-### Upgrade your your GitHub Codespace
+### Upgrade your GitHub Codespace
 
 In your GitHub Codespace created in the previous chapter,
 
