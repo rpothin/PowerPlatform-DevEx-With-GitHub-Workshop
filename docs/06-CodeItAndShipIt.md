@@ -5,7 +5,7 @@
 | Master the power of GitHub capabilities to improve your development flow efficiency | 60 min                 |
 
 > [!NOTE]
-> This chapter is the continuation of the previous one, please keep the track you selected (_[Frontend development track](#frontend-development-track) or [Backend development track](#backend-development-track)_) to be consistent across the chapters and get a better experience.
+> This chapter is the continuation of the previous one. Please keep the track you selected (_[Frontend development track](#frontend-development-track) or [Backend development track](#backend-development-track)_) to be consistent across the chapters and get a better experience.
 
 ## Frontend development track
 
