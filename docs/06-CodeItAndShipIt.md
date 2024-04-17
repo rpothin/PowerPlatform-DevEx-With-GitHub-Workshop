@@ -52,7 +52,7 @@ In your GitHub Codespace created in the previous chapter,
 2. Develop a simple PCF component using all the support you can get from GitHub Copilot (_code suggestion, code explaination, documentation, fix issues..._).
 3. Test your PCF component from your GitHub Codespace - _[Debug code components](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/debugging-custom-controls)_.
 4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and deploy your solution with the PCF component to your Power Platform environment_.
-5. Configure the PCF component in a form in your Power Platform environment and test it.
+5. Configure the PCF component in your Power Platform environment and test it.
 
 > [!NOTE]
 > You can find below some ideas of simple PCF components you could develop during this exercise:
