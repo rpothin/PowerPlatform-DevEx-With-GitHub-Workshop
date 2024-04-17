@@ -51,10 +51,6 @@ First, let select the track you want to follow for the next steps:
 > [!NOTE]
 > If you finish the selected track before the time allocated to this chapter, you can come back here and follow the steps for the other track.
 
-<details>
-
-<summary>Frontend development track</summary>
-
 ### Frontend development track
 
 In your GitHub Codespaces created in the previous step,
@@ -93,12 +89,6 @@ In your GitHub Codespaces created in the previous step,
 
 5. Validate that the workflow appears in the `Actions` tab of your repository
 
-</details>
-
-<details>
-
-<summary>Backend development track</summary>
-
 ### Backend development track
 
 In your GitHub Codespaces created in the previous step,
@@ -129,7 +119,5 @@ In your GitHub Codespaces created in the previous step,
 4. Once the file is completed, commit and push the changes to the repository
 
 5. Validate that the workflow appears in the `Actions` tab of your repository
-
-</details>
 
 [⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./06-CodeItAndShipIt.md)
