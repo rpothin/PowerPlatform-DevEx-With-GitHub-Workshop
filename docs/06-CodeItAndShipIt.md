@@ -35,6 +35,10 @@ In your GitHub Codespace created in the previous chapter,
 				"yzhang.markdown-all-in-one"
 			]
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	}
 ```
 
@@ -79,7 +83,7 @@ In your GitHub Codespace created in the previous chapter,
 9. In the `.devcontainer/devcontainer.json` file, add the `customizations` section just after the `image` property, like shown below:
 
 ```json
-	"image": "...",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -91,7 +95,10 @@ In your GitHub Codespace created in the previous chapter,
 			]
 		}
 	},
-	"features": ...
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	}
 ```
 
 10. Press `Ctrl + Shift + P` to open the command palette
