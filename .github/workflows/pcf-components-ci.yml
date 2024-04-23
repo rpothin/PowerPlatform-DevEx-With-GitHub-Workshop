@@ -76,7 +76,7 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: PCFComponents
-            path: resources/06-CodeItAndShipIt/frontend-development/solutions/PCFComponents/bin/Debug/PCFComponents.zip
+            path: resources/06-CodeItAndShipIt/frontend-development/solutions/PCFComponents/bin/Release/PCFComponents.zip
 
         - name: Install Power Platform CLI
           uses: microsoft/powerplatform-actions/actions-install@main
@@ -88,7 +88,7 @@ jobs:
             client-secret: ${{ secrets.CLIENT_SECRET }}
             tenant-id: ${{ secrets.TENANT_ID }}
             environment-url: ${{ vars.DATAVERSE_ENVIRONMENT_URL }}
-            solution-file: resources/06-CodeItAndShipIt/frontend-development/solutions/PCFComponents/bin/Debug/PCFComponents.zip
+            solution-file: resources/06-CodeItAndShipIt/frontend-development/solutions/PCFComponents/bin/Release/PCFComponents.zip
             force-overwrite: true
             publish-changes: true
             skip-dependency-check: false
