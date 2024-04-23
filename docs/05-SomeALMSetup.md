@@ -71,7 +71,7 @@ In your GitHub Codespaces created in the previous step,
 # 4. Build: It builds the PCF components located under the "src/pcf-components" folder using the 'npm run build' command - we can have multiple PCF components implemented there.
 # 5. Test: It runs unit tests using the 'npm test' command.
 # 6. Setup msbuild: Using the microsoft/setup-msbuild@v2 GitHub action to install msbuild on the runner.
-# 7. Pack solution: Run msbuild after installing it on the "src/solutions/PCFComponents" folder to create the solution zip file.
+# 7. Pack solution: Run msbuild with Release configuration after installing it on the "src/solutions/PCFComponents" folder to create the solution zip file.
 # 8. Store the packed solution zip file as an artifact.
 # 9. Install the Power Platform CLI using the "microsoft/powerplatform-actions/actions-install@main" GitHub action.
 # 10. Deploy: It deploys the solution zip file to the Dataverse environment using the "microsoft/powerplatform-actions/import-solution@main" GitHub action leveraging the "TENANT_ID", "CLIENT_ID" and "CLIENT_SECRET" GitHub environment secrets and the "DATAVERSE_ENVIRONMENT_URL" environment variable.
