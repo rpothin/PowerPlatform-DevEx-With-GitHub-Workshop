@@ -197,6 +197,8 @@ namespace VirtualPetsSimulator.Helpers
 
             Console.WriteLine($"happinessPointsBeforeCuddle: {happinessPointsBeforeCuddle}");
             Console.WriteLine($"happinessPoints: {happinessPoints}");
+            Console.WriteLine($"_initialHappinessPoints: {_initialHappinessPoints}");
+            Console.WriteLine($"_cuddleHappinessPoints: {_cuddleHappinessPoints}");
 
             // Check if the happiness points are correctly updated
             if (happinessPointsBeforeCuddle + _cuddleHappinessPoints >= _initialHappinessPoints) {
