@@ -37,11 +37,6 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
     
-        - name: Setup .NET
-          uses: actions/setup-dotnet@v3
-          with:
-            dotnet-version: '8.0.x'
-    
         - name: Restore dependencies
           run: dotnet restore resources/06-CodeItAndShipIt/backend-development/Dataverse.API.Testing/Dataverse.API.Testing.sln
 
