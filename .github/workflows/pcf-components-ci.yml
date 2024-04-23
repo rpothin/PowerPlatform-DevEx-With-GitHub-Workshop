@@ -44,24 +44,11 @@ jobs:
           with:
             node-version: '14'
 
-        - name: Fetch commits
-          run: |
-            git fetch origin ${{ github.event.before }}:refs/remotes/origin/${{ github.event.before }}
-            git fetch origin ${{ github.sha }}:refs/remotes/origin/${{ github.sha }}
-          shell: bash
-
-        - name: List changed files
-          run: |
-            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^resources/06-CodeItAndShipIt/frontend-development/pcf-components/.*")
-            echo "List of changed files: $CHANGED_FILES"
-            echo "changed_files=$CHANGED_FILES" >> $GITHUB_ENV
-          shell: bash
-
         - name: Set updated PCF component
           run: |
             echo "List of changed files:"
             echo ${{ env.changed_files }}
-            UPDATED_PCF_COMPONENT=$(echo "${{ env.changed_files }}" | cut -d'/' -f3)
+            UPDATED_PCF_COMPONENT="InterpolRedNoticeStatus"
             echo "Updated PCF component: $UPDATED_PCF_COMPONENT"
             echo "UPDATED_PCF_COMPONENT=$UPDATED_PCF_COMPONENT" >> $GITHUB_ENV
           shell: bash
