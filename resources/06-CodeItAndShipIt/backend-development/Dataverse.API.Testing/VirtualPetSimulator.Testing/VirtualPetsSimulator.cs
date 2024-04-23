@@ -245,7 +245,7 @@ namespace Dataverse.API.Testing
         public void CuddlePet_ReachingInitialHappinessPoints()
         {
             // Update the happiness points of the pet to 99990
-            PetHelper.UpdatePetHappinessPoints(_serviceClient, _petId, 99990);
+            PetHelper.UpdatePetHappinessPoints(_serviceClient, _petId, 99890);
 
             // Retrieve the pet
             var petBeforeCuddling = _serviceClient.Retrieve("rpo_pet", _petId, new ColumnSet("rpo_happinesspoints"));
