@@ -202,8 +202,10 @@ namespace VirtualPetsSimulator.Helpers
 
             // Check if the happiness points are correctly updated
             if (happinessPointsBeforeCuddle + _cuddleHappinessPoints >= _initialHappinessPoints) {
+                Console.WriteLine("1");
                 return happinessPoints == _initialHappinessPoints;
             } else {
+                Console.WriteLine("2");
                 // Consider the option that the happiness points already decreased by 10
                 return happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints || happinessPoints == happinessPointsBeforeCuddle + _cuddleHappinessPoints - 10;
             }
