@@ -56,6 +56,10 @@ In your GitHub Codespace created in the previous chapter,
 2. Develop a simple PCF component using all the support you can get from GitHub Copilot (_code suggestion, code explaination, documentation, fix issues..._).
 3. Test your PCF component from your GitHub Codespace - _[Debug code components](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/debugging-custom-controls)_.
 4. Commit and push your changes to the `main` branch of your repository - _this will trigger the GitHub workflow you created in the previous step to build and deploy your solution with the PCF component to your Power Platform environment_.
+
+> [!NOTE]
+> If the workflow does not work as expected, you can add the [`workflow_dispatch`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) event in the trigger section of the workflow to be able to run it manually and debug the issue.
+
 5. Configure the PCF component in your Power Platform environment and test it.
 
 > [!NOTE]
@@ -139,5 +143,8 @@ Here are the main requirements covered by the solution:
 
 2. Develop tests for the `Virtual Pet Simulator` solution to ensure that the documented requirements are met.
 3. Commit and push your changes to the `main` branch of your repository to validate your tests - _this will trigger the GitHub workflow you created in the previous step to build and run the tests considering your Power Platform environment where the solution is deployed_.
+
+> [!NOTE]
+> If the workflow does not work as expected, you can add the [`workflow_dispatch`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) event in the trigger section of the workflow to be able to run it manually and debug the issue.
 
 [⬅️ Previous chapter](./05-SomeALMSetup.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [Next chapter ➡️](./07-JobsNotFinished.md)
