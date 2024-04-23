@@ -195,6 +195,9 @@ namespace VirtualPetsSimulator.Helpers
             // Get the happiness points
             var happinessPoints = pet.GetAttributeValue<int>("rpo_happinesspoints");
 
+            Console.WriteLine($"happinessPointsBeforeCuddle: {happinessPointsBeforeCuddle}");
+            Console.WriteLine($"happinessPoints: {happinessPoints}");
+
             // Check if the happiness points are correctly updated
             if (happinessPointsBeforeCuddle + _cuddleHappinessPoints >= _initialHappinessPoints) {
                 return happinessPoints == _initialHappinessPoints;
