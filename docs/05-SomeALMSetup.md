@@ -120,8 +120,8 @@ In your GitHub Codespaces created in the previous step,
 > We will use the time allocated to the next chapter and the fact that you will have some code to test to finalize the configuration of the GitHub workflow and make it work, don't worry.
 > You can add the [`workflow_dispatch`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) event in the trigger section of the workflow to be able to run it manually and investigate why it is not working as expected.
 
-1. Once the file is completed, commit and push the changes to the repository
+4. Once the file is completed, commit and push the changes to the repository
 
-2. Validate that the workflow appears in the `Actions` tab of your repository
+5. Validate that the workflow appears in the `Actions` tab of your repository
 
 [⬅️ Previous chapter](./04-OrganizeYourWork.md) | [🏡 Main agenda](../README.md#workshop-agenda) | [➡️ Next chapter](./06-CodeItAndShipIt.md)
