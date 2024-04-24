@@ -42,6 +42,9 @@ In your GitHub Codespace created in the previous chapter,
 	}
 ```
 
+> [!NOTE]
+> Regarding the extensions, you could also consider the following one that could help you during the development of your PCF component: [PCF Builder by Danish Naglekar](https://marketplace.visualstudio.com/items?itemName=danish-naglekar.pcf-builder)
+
 10. Press `Ctrl + Shift + P` to open the command palette
 11. Search for the `Codespaces: Rebuild Container` command and select it
 12. Wait for the dev container to be initialized and opened in your browser
